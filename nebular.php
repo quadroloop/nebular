@@ -30,7 +30,7 @@ https://github.com/quadroloop/nebular
 
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-white dark-border-right" style="display:none;background-color:#272822;overflow: auto;" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large w3-hover-black"><center><img src="nebular.jpg" class="crest-logo"></center></button>
+  <button class="w3-bar-item w3-button w3-large w3-hover-black"><center><img src="nebular.png" class="crest-logo"></center></button>
     <div class="w3-bar dark-border-top dark-border-bottom">
         <!--small navbar-->
         <a class="w3-bar-item w3-center"><i class="w3-button w3-hover-indigo fa fa-bars w3-text-grey w3-round" onclick="open_tools();"></i><i class="w3-round w3-button w3-hover-indigo fa fa-gear w3-text-grey" onclick="open_settings();"></i><i class="w3-round w3-button w3-hover-indigo fa fa-chevron-circle-left w3-text-grey"  onclick="w3_close()"></i></a>
