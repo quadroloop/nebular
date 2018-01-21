@@ -29,7 +29,7 @@ https://github.com/quadroloop/nebular
 <body>
 
 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-white dark-border-right" style="display:none;background-color:rgb(34, 44, 40); overflow: auto;" id="mySidebar">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-white dark-border-right" style="display:none;background-color:#272822;overflow: auto;" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large w3-hover-black"><center><img src="nebular.jpg" class="crest-logo"></center></button>
     <div class="w3-bar dark-border-top dark-border-bottom">
         <!--small navbar-->
@@ -74,10 +74,14 @@ https://github.com/quadroloop/nebular
   <div id="editor"></div>
   <div id="dashboard">
     <div class="w3-row w3-small">  
-      <div class="w3-container dark-border w3-col s4" style="border-radius:5px;width:250px;margin:10px;">
-    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a>
-
-
+      <div class="w3-container dark-border w3-col s4" style="border-radius:5px;width:250px;margin:10px;background-color:#272822;">
+    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+    <hr style="border-top: 0.4px solid #333;">
+    <div class="w3-bar">
+      <a class="w3-bar-item"><i class="fa fa-bars w3-text-indigo"></i></a>
+     <a class="w3-bar-item"><i class="fa fa-trash w3-text-red"></i></a>
+      <a class="w3-bar-item"><i class="fa fa-circle w3-text-amber"></i></a>
+    </div>
       </div>
     </div>  
   </div>
