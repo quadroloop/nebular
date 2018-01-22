@@ -3,6 +3,9 @@
 
 var ps = new PerfectScrollbar('#mySidebar');
 var ps1 = new PerfectScrollbar('.data_log');
+var ps2 = new PerfectScrollbar('#dashboard');
+var ps3 = new PerfectScrollbar('#datatable');
+
 
  $( document ).ready(function() {
       var editorscroll = new PerfectScrollbar('.ace_scrollbar');
