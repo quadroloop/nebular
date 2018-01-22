@@ -26,7 +26,7 @@ body {
     }
 
 #dashboard {
-       width: 70%;
+       width: 100%;
        height: 89%;
        top: 0;
        position: fixed;
@@ -92,7 +92,7 @@ body {
 }
 
 .db-panel {
-  border-radius:5px;width:350px;margin:10px;background-color:#272822;
+  border-radius:5px;max-width:350px;margin:10px;background-color:#272822;
 }
 
 .w3-table,.nb-table{border-collapse:collapse;border-spacing:0;width:100%;display:table;color:#fff}.nb-table{border:1px solid #333}

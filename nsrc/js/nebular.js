@@ -28,3 +28,12 @@ window.onload = function() {
   setTimeout("w3_open()",500); // open dashboard
   document.getElementById("data").focus(); // focus on command bar..
 }
+
+
+var capp = "dashboard";
+
+function nav(screen) {
+  document.getElementById(capp).style.display = "none";
+  document.getElementById(screen).style.display = "block";
+  capp = screen;
+}

@@ -33,24 +33,25 @@ https://github.com/quadroloop/nebular
   <button class="w3-bar-item w3-button w3-large w3-hover-black"><center><img src="nebular.png" class="crest-logo"></center></button>
     <div class="w3-bar dark-border-top dark-border-bottom">
         <!--small navbar-->
-        <a class="w3-bar-item w3-center"><i class="w3-button w3-hover-indigo fa fa-bars w3-text-grey w3-round" onclick="open_tools();"></i><i class="w3-round w3-button w3-hover-indigo fa fa-gear w3-text-grey" onclick="open_settings();"></i><i class="w3-round w3-button w3-hover-indigo fa fa-chevron-circle-left w3-text-grey"  onclick="w3_close()"></i></a>
+        <a class="w3-bar-item w3-center"><i class="w3-button w3-hover-indigo fa fa-bars w3-text-grey w3-round" onclick="nav('tools');"></i><i class="w3-round w3-button w3-hover-indigo fa fa-gear w3-text-grey" onclick="nav('settings');"></i><i class="w3-round w3-button w3-hover-indigo fa fa-chevron-circle-left w3-text-grey"  onclick="w3_close()"></i></a>
       </div>
   <div id="tab" class="w3-small">
       <!--tools tab-->
       <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-database w3-text-grey"></i> DATABASES</a>
       <div id="tools" class="w3-animate-left">
-         <a onclick="dboard();" class="w3-bar-item w3-text-grey w3-button w3-hover-indigo"><i class="fa fa-area-chart w3-text-amber"></i> Dashboard</a>
-         <a onclick="import_template();" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-sitemap w3-text-blue"></i> Import Database</a>
+         <a onclick="nav('dashboard');" class="w3-bar-item w3-text-grey w3-button w3-hover-indigo"><i class="fa fa-area-chart w3-text-amber"></i> Dashboard</a>
+         <a onclick="nav('datatable');" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-sitemap w3-text-blue"></i> Import Database</a>
          <a onclick="clearcode();" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-refresh w3-text-red"></i> Clear</a>
          <a class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-slack w3-text-grey"></i> API</a>
          <a onclick="api_POST();" class="w3-bar-item w3-button w3-hover-indigo w3-text-pink"><i class="fa fa-circle"></i> POST</a>
          <a onclick="api_GET();" class="w3-bar-item w3-button w3-hover-indigo w3-text-blue"><i class="fa fa-circle"></i> GET</a>
          <a onclick="api_SEND();" class="w3-bar-item w3-button w3-hover-indigo w3-text-amber"><i class="fa fa-circle"></i> SEND</a>
-         <a onclick="api_listen()" class="w3-bar-item w3-button w3-hover-indigo w3-text-green"><i class="fa fa-hashtag"></i> LISTEN</a>
+        <a onc lick="api_listen()" class="w3-bar-item w3-button w3-hover-indigo w3-text-green"><i class="fa fa-hashtag"></i> LISTEN</a>
          <a class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-folder-open w3-text-grey"></i> FILE</a>
          <a onclick="save();" class="w3-bar-item w3-button w3-hover-indigo w3-text-pink"><i class="fa fa-file"></i> SAVE</a>
          <a onclick="upload();" class="w3-bar-item w3-button w3-hover-indigo w3-text-blue"><i class="fa fa-upload"></i> UPLOAD</a>
-         <input id="file_holder" type="file">
+          <a class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-user w3-text-grey"></i> USER</a>
+         <a onclick="save();" class="w3-bar-item w3-button w3-hover-indigo w3-text-white"><i class="fa fa-user-times w3-text-blue"></i> Log out</a>
       </div>
       <!--end of tools tab-->
       <!--settings tab-->
@@ -72,7 +73,7 @@ https://github.com/quadroloop/nebular
 <div id="main" style="position:fixed;">
 <!--responsive body of document-->
   <div id="editor"></div>
-  <div id="datatable">
+  <div id="datatable" class="w3-animate-opacity">
     <table class="nb-table w3-small w3-hoverable w3-margin">
     <tr>
       <th>First Name</th>
@@ -581,11 +582,11 @@ https://github.com/quadroloop/nebular
 
   </table>
   </div>
-  <div id="dashboard">
+  <div id="dashboard" class="w3-animate-opacity">
     <div class="w3-row w3-small">
       <!-- start of Db cell-->
       <div class="w3-container dark-border w3-col s4 db-panel">
-    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
     <hr style="border-top: 0.4px solid #333;">
     <div class="w3-bar">
       <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -597,7 +598,7 @@ https://github.com/quadroloop/nebular
     <!--end of db cell-->
     <!-- start of Db cell-->
     <div class="w3-container dark-border w3-col s4 db-panel">
-  <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+  <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
   <hr style="border-top: 0.4px solid #333;">
   <div class="w3-bar">
     <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -609,7 +610,7 @@ https://github.com/quadroloop/nebular
   <!--end of db cell-->
   <!-- start of Db cell-->
   <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
   <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -621,7 +622,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -633,7 +634,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -645,7 +646,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -657,7 +658,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -669,7 +670,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -681,7 +682,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -693,7 +694,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -705,7 +706,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -717,7 +718,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -729,7 +730,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
   <!-- start of Db cell-->
   <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
   <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -741,7 +742,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -753,7 +754,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -765,7 +766,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -777,7 +778,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -789,7 +790,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -801,7 +802,7 @@ https://github.com/quadroloop/nebular
 <!--end of db cell-->
 <!-- start of Db cell-->
 <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
 <hr style="border-top: 0.4px solid #333;">
 <div class="w3-bar">
 <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
@@ -824,7 +825,7 @@ https://github.com/quadroloop/nebular
 <div class="position:fixed">
 <div class="w3-bottom">
  <div class="w3-bar dark-border-top" style="background-color:#272822;">
-    <input id="data" class="w3-text-white w3-input w3-bar-item w3-round dark-border w3-margin" placeholder="Command Here.." type="text" style="width:800px;background-color:rgb(1, 6, 34);">
+    <input id="data" class="w3-text-white w3-input w3-bar-item w3-round dark-border w3-margin" placeholder="Search Database" type="text" style="width:800px;background-color:rgb(1, 6, 34);">
     <a id="open-db" class="dash-switch-btn w3-text-white w3-small w3-round w3-margin" onclick="w3_open()"><i class="fa fa-chevron-circle-right fa-2x"></i></a>
  </div>
 </div>
