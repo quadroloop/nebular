@@ -1,5 +1,5 @@
 /*nebular.css styles */
-  
+
 html, body{
     height: 99%;
     overflow: auto;
@@ -17,7 +17,7 @@ body {
     width: 130px;
 }
 
-#editor { 
+#editor {
        width: 70%;
        height: 88%;
        top: 0;
@@ -25,17 +25,18 @@ body {
        display: none;
     }
 
-#dashboard { 
+#dashboard {
        width: 70%;
        height: 88%;
        top: 0;
        position: fixed;
-       background-color:rgb(24, 25, 21); 
-    }    
+       background-color:rgb(24, 25, 21);
+       overflow-y: scroll;
+    }
 
-    
 
-    .data_log { 
+
+    .data_log {
        width: 20%;
        height: 88%;
        overflow: auto;
@@ -47,12 +48,12 @@ body {
     }
 
   #logs {
-  }  
+  }
 
 
 .dash-switch-btn{border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
 .dash-switch-btn:hover{box-shadow:none;}
-.dash-switch-btn{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+.dash-switch-btn{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .dash-switch-btn:disabled,{cursor:not-allowed;opacity:0.3}
 .dash-switch-btn,.dash-switch-btn:disabled:hover{box-shadow:none}
 
@@ -78,4 +79,8 @@ body {
 
 #mySidebar {
     height: 100%;
+}
+
+.db-panel {
+  border-radius:5px;width:350px;margin:10px;background-color:#272822;
 }
