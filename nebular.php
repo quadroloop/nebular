@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 =================================================================================
 |#|            _           _            |#| nebular DB  | v.0                 |#|
@@ -73,17 +73,17 @@ https://github.com/quadroloop/nebular
 <!--responsive body of document-->
   <div id="editor"></div>
   <div id="dashboard">
-    <div class="w3-row w3-small">  
-      <div class="w3-container dark-border w3-col s4" style="border-radius:5px;width:250px;margin:10px;background-color:#272822;">
-    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
+    <div class="w3-row w3-small">
+      <div class="w3-container dark-border w3-col s4" style="border-radius:5px;width:350px;margin:10px;background-color:#272822;">
+    <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> Sample_DB</a><br><br>
     <hr style="border-top: 0.4px solid #333;">
     <div class="w3-bar">
-      <a class="w3-bar-item"><i class="fa fa-bars w3-text-indigo"></i></a>
-     <a class="w3-bar-item"><i class="fa fa-trash w3-text-red"></i></a>
-      <a class="w3-bar-item"><i class="fa fa-circle w3-text-amber"></i></a>
+      <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
+     <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
     </div>
+    <br>
       </div>
-    </div>  
+    </div>
   </div>
 
 
@@ -99,7 +99,7 @@ https://github.com/quadroloop/nebular
     <input id="data" class="w3-text-white w3-input w3-bar-item w3-round dark-border w3-margin" placeholder="Command Here.." type="text" style="width:800px;background-color:rgb(1, 6, 34);">
     <a id="open-db" class="dash-switch-btn w3-text-white w3-small w3-round w3-margin" onclick="w3_open()"><i class="fa fa-chevron-circle-right fa-2x"></i></a>
  </div>
-</div> 
+</div>
 </div>
 
 <!--code container-->
@@ -116,7 +116,7 @@ https://github.com/quadroloop/nebular
 <script src="./nsrc/js/perfect-scrollbar.js"></script>
 <script src="./nsrc/js/nebular.js"></script>
 
-<script> 
+<script>
 var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/php");
