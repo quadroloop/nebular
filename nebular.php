@@ -19,7 +19,7 @@ https://github.com/quadroloop/nebular
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./nsrc/js/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.7/sweetalert2.all.js"></script>
+<script src="./nsrc/js/sweet-alert2.js"></script>
 <link rel="stylesheet" href="./nsrc/css/w3.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
 <link rel="stylesheet" href="./nsrc/css/font-awesome.min.css">
@@ -80,6 +80,7 @@ https://github.com/quadroloop/nebular
     <div class="w3-bar">
       <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
      <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
+     <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
     </div>
     <br>
       </div>
