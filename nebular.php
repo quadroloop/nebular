@@ -40,7 +40,7 @@ https://github.com/quadroloop/nebular
       <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-database w3-text-grey"></i> DATABASES</a>
       <div id="tools" class="w3-animate-left">
          <a onclick="nav('dashboard');" class="w3-bar-item w3-text-grey w3-button w3-hover-indigo"><i class="fa fa-area-chart w3-text-amber"></i> Dashboard</a>
-         <a onclick="nav('datatable');" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-sitemap w3-text-blue"></i> Import Database</a>
+         <a class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-sitemap w3-text-blue"></i> Import Database</a>
          <a onclick="clearcode();" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-refresh w3-text-red"></i> Clear</a>
          <a class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-slack w3-text-grey"></i> API</a>
          <a onclick="api_POST();" class="w3-bar-item w3-button w3-hover-indigo w3-text-pink"><i class="fa fa-circle"></i> POST</a>
@@ -74,7 +74,23 @@ https://github.com/quadroloop/nebular
 <!--responsive body of document-->
   <div id="editor"></div>
   <div id="datatable" class="w3-animate-opacity">
-    <table class="nb-table w3-small w3-hoverable w3-margin">
+  <div class="w3-top">
+    <div class="w3-bar dark-border-bottom bg-dark">
+       <a class="w3-text-blue w3-bar-item"><i class="fa fa-connectdevelop w3-spin"></i> Database Name</a>
+       <div class="w3-dropdown-hover">
+   <button class="w3-button w3-text-white w3-hover-indigo dark-border-left dark-border-right"><i class="fa fa-chevron-down"></i> DB Sections</button>
+   <div class="w3-dropdown-content w3-bar-block w3-card-4 bg-dark w3-text-white">
+     <a href="#" class="w3-bar-item w3-button">Link 1</a>
+     <a href="#" class="w3-bar-item w3-button">Link 2</a>
+     <a href="#" class="w3-bar-item w3-button">Link 3</a>
+   </div>
+ </div>
+    </div>
+  </div>
+    <br>
+    <br>
+    <table class="nb-table w3-small w3-hoverable w3-margin" id="dbtable">
+      <!--table headers-->
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -89,6 +105,8 @@ https://github.com/quadroloop/nebular
       <th>Last Name</th>
       <th>Points</th>
     </tr>
+    <!--table headers-->
+    <!--table data-->
     <tr>
       <td>Jill</td>
       <td>Smith</td>
@@ -102,719 +120,493 @@ https://github.com/quadroloop/nebular
       <td>Jill</td>
       <td>Smith</td>
       <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+</tr>
+<tr>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+  <td>Jill</td>
+  <td>Smith</td>
+  <td>50</td>
+</tr>
+<tr>
+<td>Bryce</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Smith</td>
+<td>50</td>
+<td>Jill</td>
+<td>Mercines</td>
+<td>51</td>
+</tr>
+  <!--table data-->
   </table>
   </div>
   <div id="dashboard" class="w3-animate-opacity">
     <div class="w3-row w3-small">
-      <!-- start of Db cell-->
-      <div class="w3-container dark-border w3-col s4 db-panel">
+
+      <ul id="dtable" style="list-style:none;">
+        <!-- start of Db cell-->
+      <li>
+      <div class="w3-container dark-border w3-col s4 db-panel w3-animate-opacity">
     <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
     <hr style="border-top: 0.4px solid #333;">
     <div class="w3-bar">
-      <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
+      <a onclick="nav('datatable');cdb='dbtable';pointer='table'" class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
      <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
      <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
     </div>
     <br>
     </div>
-    <!--end of db cell-->
-    <!-- start of Db cell-->
-    <div class="w3-container dark-border w3-col s4 db-panel">
-  <a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-  <hr style="border-top: 0.4px solid #333;">
-  <div class="w3-bar">
-    <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-   <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-   <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
+    </li>
+<!--end of db cell-->
+</ul>
   </div>
-  <br>
-  </div>
-  <!--end of db cell-->
-  <!-- start of Db cell-->
-  <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-  <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
- <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
- <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
 </div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-  <!-- start of Db cell-->
-  <div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-  <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
- <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
- <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-<!-- start of Db cell-->
-<div class="w3-container dark-border w3-col s4 db-panel">
-<a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> very long database name for some reason</a><br><br>
-<hr style="border-top: 0.4px solid #333;">
-<div class="w3-bar">
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a>
-<a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a>
-</div>
-<br>
-</div>
-<!--end of db cell-->
-    </div>
-  </div>
-
 
     <div class="data_log dark-border">
        <div class="w3-bar dark-border-bottom">
@@ -825,7 +617,7 @@ https://github.com/quadroloop/nebular
 <div class="position:fixed">
 <div class="w3-bottom">
  <div class="w3-bar dark-border-top" style="background-color:#272822;">
-    <input id="data" class="w3-text-white w3-input w3-bar-item w3-round dark-border w3-margin" placeholder="Search Database" type="text" style="width:800px;background-color:rgb(1, 6, 34);">
+    <input id="search" class="w3-text-white w3-input w3-bar-item w3-round dark-border w3-margin" onkeyup="search(cdb,pointer);" placeholder="Search Database" type="text" style="width:800px;background-color:rgb(1, 6, 34);">
     <a id="open-db" class="dash-switch-btn w3-text-white w3-small w3-round w3-margin" onclick="w3_open()"><i class="fa fa-chevron-circle-right fa-2x"></i></a>
  </div>
 </div>

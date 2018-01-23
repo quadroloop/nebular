@@ -95,6 +95,10 @@ body {
   border-radius:5px;max-width:350px;margin:10px;background-color:#272822;
 }
 
+.bg-dark {
+  background-color:#272822;
+}
+
 .w3-table,.nb-table{border-collapse:collapse;border-spacing:0;width:100%;display:table;color:#fff}.nb-table{border:1px solid #333}
 .w3-bordered tr,.nb-table tr{border-bottom:1px solid #333}.w3-striped tbody tr:nth-child(even){background-color:#f1f1f1}
 .nb-table tr:nth-child(odd){background-color:transparent}.nb-table tr:nth-child(even){background-color:#333}
