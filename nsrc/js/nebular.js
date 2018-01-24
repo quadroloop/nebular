@@ -27,6 +27,8 @@ function w3_close() {
 window.onload = function() {
   setTimeout("w3_open()",500); // open dashboard
   document.getElementById("search").focus(); // focus on command bar..
+  document.getElementById('dtable').classname = '';
+
 }
 
 
@@ -108,5 +110,3 @@ axios.get('https://jsonplaceholder.typicode.com/posts/')
   .catch(function (error) {
     console.log(error);
   });
-
- 
