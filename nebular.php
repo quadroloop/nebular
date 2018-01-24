@@ -30,6 +30,8 @@ https://github.com/quadroloop/nebular
 <body>
 
 
+
+
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-white dark-border-right" style="display:none;background-color:#272822;overflow: auto;" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large w3-hover-black"><center><img src="nebular.png" class="crest-logo"></center></button>
     <div class="w3-bar dark-border-top dark-border-bottom">
@@ -42,7 +44,7 @@ https://github.com/quadroloop/nebular
       <div id="tools" class="w3-animate-left">
          <a onclick="nav('dashboard');" class="w3-bar-item w3-text-grey w3-button w3-hover-indigo"><i class="fa fa-area-chart w3-text-amber"></i> Dashboard</a>
          <a onclick="nav('editor');"class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-sitemap w3-text-blue"></i> Import Database</a>
-         <a onclick="clearcode();" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-refresh w3-text-red"></i> Clear</a>
+         <a onclick="nav('addDB')" class="w3-bar-item w3-button w3-hover-indigo w3-text-grey"><i class="fa fa-plus-circle w3-text-blue"></i> Add database</a>
          <a class="dark-border w3-round w3-padding-small w3-text-grey tool_state"><i class="fa fa-slack w3-text-grey"></i> API</a>
          <a onclick="api_POST();" class="w3-bar-item w3-button w3-hover-indigo w3-text-pink"><i class="fa fa-circle"></i> POST</a>
          <a onclick="api_GET();" class="w3-bar-item w3-button w3-hover-indigo w3-text-blue"><i class="fa fa-circle"></i> GET</a>
@@ -108,7 +110,15 @@ https://github.com/quadroloop/nebular
     </tr>
     <!--table headers-->
     <!--table data-->
-
+     <?php
+     /*
+      $i = 0;
+      while($i < 100) {
+        echo '<tr><td>Bryce</td><td>Smith</td><td>50</td><td>Jill</td><td>Smith</td><td>50</td><td>Jill</td><td>Smith</td><td>50</td><td>Jill</td><td>Smith</td><td>50</td></tr>';
+       $i++;
+      }
+      */
+     ?>
 
 
   </table>
