@@ -11,35 +11,9 @@ this project is opensource under MIT license, view it on github at:
 https://github.com/quadroloop/nebular
 */
 
-$put = $_GET['p'];
+@$put = $_GET['p'];
 if(isset($put)){
   file_put_contents('./nsrc/db.nb', $put);
-  /*
-  {
-    "program": "myprog",
-    "version": "1.2.3",
-    "release": "45",
-    "datetime": "2016-10-06T19:58:29Z",
-    "timestamp": 1475783909566791977,
-    "status": "success",
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "routes": [
-            {
-                "method": "GET",
-                "path": "/status",
-                "description": "check this service status"
-            },
-            {
-                "method": "GET",
-                "path": "/password",
-                "description": "returns a random passwords"
-            }
-        ]
-    }
-}
-*/
  exit(); 
 }
 
