@@ -17,6 +17,13 @@ if(isset($put)){
  exit(); 
 }
 
+//get data from database
+@$get = $_GET['get'];
+  if(isset($get)) {
+    $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+    echo $age[$get];
+    exit();
+  }
 
 ?>
 
@@ -125,6 +132,7 @@ if(isset($put)){
        $i++;
       }
       */
+
      ?>
 
 
