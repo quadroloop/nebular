@@ -13,7 +13,12 @@ https://github.com/quadroloop/nebular
 
 @$put = $_GET['put'];
 if(isset($put)){
-  file_put_contents('./nsrc/db.nb', $put);
+  @$data = $_GET['data'];
+  $PATH = './nsrc/db.nb';
+  //send an object to the file with identifer..
+  file_put_contents($PATH,"*".$put."*",FILE_APPEND);
+  file_put_contents($PATH,$data,FILE_APPEND); 
+  file_put_contents($PATH,"*".$put."ender*",FILE_APPEND);
  exit(); 
 }
 
