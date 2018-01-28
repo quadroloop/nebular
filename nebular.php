@@ -11,7 +11,7 @@ this project is opensource under MIT license, view it on github at:
 https://github.com/quadroloop/nebular
 */
 
-@$put = $_GET['p'];
+@$put = $_GET['put'];
 if(isset($put)){
   file_put_contents('./nsrc/db.nb', $put);
  exit(); 
@@ -20,10 +20,23 @@ if(isset($put)){
 //get data from database
 @$get = $_GET['get'];
   if(isset($get)) {
-    $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
-    echo $age[$get];
+    require './nsrc/db.nb';
+    echo $dataminer[$get];
     exit();
   }
+
+ //update data
+@$update = $_GET['update'];
+  if(isset($update)) {
+    echo "called update data";
+    exit();
+  }  
+
+@$delete = $_GET['delete'];
+  if(isset($delete)) {
+    echo "called delete data";
+    exit();
+  }  
 
 ?>
 
@@ -142,6 +155,17 @@ if(isset($put)){
     <div class="w3-row w3-small">
 
       <ul id="dtable" style="list-style:none;">
+      <?php
+   // list all database..
+     $datafiles = "*.nb";
+     $directory = "./nsrc/";
+     $phpfiles = glob($directory . $datafiles);
+    foreach($phpfiles as $phpfile)
+    {
+    echo '<li><div class="w3-container dark-border w3-col s4 db-panel w3-animate-opacity"><a id="tool_state" class="dark-border w3-round w3-padding-small w3-text-blue tool_state"><i class="fa fa-database w3-text-blue"></i> '.$phpfile.'</a><br><br> <hr style="border-top: 0.4px solid #333;"> <div class="w3-bar"> <a onclick="nav(&apos;datatable&apos;);cdb=&apos;dbtable&apos;;pointer=&apos;table&apos;" class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-bars w3-text-indigo"></i> View Database</a> <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-trash w3-text-red"></i> Delete</a> <a class="w3-bar-item w3-text-grey w3-btn w3-hover-blue w3-round"><i class="fa fa-upload w3-text-amber"></i> Export</a> </div> <br> </div> </li>';
+    }
+   ?>
+
 </ul>
   </div>
 </div>
