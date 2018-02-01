@@ -13,12 +13,12 @@ https://github.com/quadroloop/nebular
 
 @$put = $_GET['put'];
 if(isset($put)){
-  @$data = $_GET['data'];
+  @$data = $_GET['data']; // contents to be stored in cell
+  @$datacell = $_GET['cell']; // the name of the data row.
+  @$property = $_GET['key'];
   $PATH = './nsrc/db.nb';
-  //send an object to the file with identifer..
-  file_put_contents($PATH,"*".$put."*",FILE_APPEND);
-  file_put_contents($PATH,$data,FILE_APPEND); 
-  file_put_contents($PATH,"*".$put."ender*",FILE_APPEND);
+  $dcell = '$'.$datacell.' = array("'.$property.'"=>"'.$data.'");';
+  file_put_contents($PATH, $dcell, FILE_APPEND);
  exit(); 
 }
 
@@ -26,7 +26,7 @@ if(isset($put)){
 @$get = $_GET['get'];
   if(isset($get)) {
     require './nsrc/db.nb';
-    echo $dataminer[$get];
+  // work on this feature..
     exit();
   }
 

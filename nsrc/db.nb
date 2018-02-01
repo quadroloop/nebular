@@ -1,0 +1,2 @@
+<?php
+$fdata = array("sec1"=>"Something to put");
