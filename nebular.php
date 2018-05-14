@@ -70,8 +70,8 @@ https://github.com/quadroloop/nebular
                 </li>
                 <li>
                     <a href="user.html">
-                        <i class="ti-user"></i>
-                        <p>User Profile</p>
+                        <i class="ti-server"></i>
+                        <p>Databases</p>
                     </a>
                 </li>
                 <li>
