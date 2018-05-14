@@ -62,44 +62,44 @@ https://github.com/quadroloop/nebular
             </div>
 
             <ul class="nav">
-                <li class="active">
-                    <a href="dashboard.html">
+                <li class="active" onclick="nav(this);">
+                    <a>
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-server"></i>
                         <p>Databases</p>
                     </a>
                 </li>
-                <li>
-                    <a href="table.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-view-list-alt"></i>
                         <p>Table List</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-text"></i>
                         <p>Typography</p>
                     </a>
                 </li>
-                <li>
-                    <a href="icons.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-pencil-alt2"></i>
                         <p>Icons</p>
                     </a>
                 </li>
-                <li>
-                    <a href="maps.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-map"></i>
                         <p>Maps</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.html">
+                <li onclick="nav(this);">
+                    <a>
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
@@ -404,6 +404,12 @@ https://github.com/quadroloop/nebular
             });
 
         });
+
+        function nav(menu){
+            // document.getElementsByClassName('active')[0].classList.remove('active');
+            document.getElementsByClassName('active')[0].classList.remove('active'); 
+            menu.classList.add('active');
+        }
     </script>
 
 </html>
