@@ -12,7 +12,6 @@ https://github.com/quadroloop/nebular
 */
  
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -178,7 +177,7 @@ https://github.com/quadroloop/nebular
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated now
+                                        <i class="ti-reload"></i>Realtime
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +202,7 @@ https://github.com/quadroloop/nebular
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-calendar"></i> Last day
+                                        <i class="ti-calendar"></i>Realtime
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +227,7 @@ https://github.com/quadroloop/nebular
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-timer"></i> In the last hour
+                                        <i class="ti-timer"></i> Realtime
                                     </div>
                                 </div>
                             </div>
@@ -253,7 +252,7 @@ https://github.com/quadroloop/nebular
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated now
+                                        <i class="ti-reload"></i> Realtime
                                     </div>
                                 </div>
                             </div>
@@ -285,53 +284,6 @@ https://github.com/quadroloop/nebular
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card w3-card-4">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card w3-card-4 ">
-                            <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
-
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-check"></i> Data information certified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -342,8 +294,8 @@ https://github.com/quadroloop/nebular
                     <ul>
 
                         <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
+                            <a href="https://github.com/quadroloop/nebular">
+                                Nebular v. 0.1 | Quadroloop
                             </a>
                         </li>
                         <li>
