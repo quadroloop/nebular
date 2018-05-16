@@ -170,8 +170,8 @@ https://github.com/quadroloop/nebular
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Capacity</p>
-                                            105GB
+                                            <p>Databases</p>
+                                            15
                                         </div>
                                     </div>
                                 </div>
@@ -195,8 +195,8 @@ https://github.com/quadroloop/nebular
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Revenue</p>
-                                            $1,345
+                                            <p>Objects</p>
+                                            123
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@ https://github.com/quadroloop/nebular
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Errors</p>
+                                            <p>Queries</p>
                                             23
                                         </div>
                                     </div>
@@ -406,7 +406,6 @@ https://github.com/quadroloop/nebular
         });
 
         function nav(menu){
-            // document.getElementsByClassName('active')[0].classList.remove('active');
             document.getElementsByClassName('active')[0].classList.remove('active'); 
             menu.classList.add('active');
         }

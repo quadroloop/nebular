@@ -1,2 +1,2 @@
 # nebular
-A simple experimental database application, based on PHP and Javascript.
+A simple experimental storage application, based on PHP and Javascript.
