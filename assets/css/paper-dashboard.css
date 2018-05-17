@@ -90,6 +90,10 @@ li {
   cursor: pointer;
 }  
 
+.bg-avatar {
+      background: linear-gradient(violet,purple,indigo);
+}
+
 .text-muted {
   color: #DDDDDD; }
 
