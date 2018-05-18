@@ -11,7 +11,24 @@ this project is opensource under MIT license, view it on github at:
 https://github.com/quadroloop/nebular
 */
 
+session_start();
+
+$user = $_SESSION['user'];
+$password = $_SESSION['password'];
 $page = $_GET['p'];
+
+// init
+// checkAuth();
+
+function checkAuth(){
+    if(!isset($user) || !isset($password)){
+        if($page == 'login'){}else{
+              header("Location: ?p=login");
+        }
+    }
+}
+
+// register api routes
 $api_queries = array(
     "create_db,post",
     "get_object,get",
@@ -26,6 +43,7 @@ function ndir($var) {
   return str_replace('./', '', $var);
 }
 
+// select request color
 function qcolor($req){
   switch($req){
     case 'post' :
@@ -77,6 +95,28 @@ function qcolor($req){
 
 </head>
 <body>
+
+<?php if($page == 'login'): ?>
+    <div id="login">
+       <center>
+          <div class="login-container">
+                <img src="nebular.png" style="width:190px;margin:30px;"><br>
+                <span class="text-dark">Nebular DB | Admin Login</span>
+                <div class="w3-margin">
+                    <input class="w3-input w3-border w3-round" placeholder="Username"><br>
+                     <input class="w3-input w3-border w3-round" placeholder="Password" type="password">
+                </div>
+                <button type="submit" class="w3-btn w3-black w3-round w3-margin">Log in</button><br>
+                <a href="https://github.com/quadroloop/nebular">Quadroloop | Nebular v. 0.1</a>
+          </div>
+       </center> 
+    </div>
+  </body>
+  </html>       
+ <?php 
+    exit();
+    endif;
+ ?>
 
 <div class="wrapper">
     <div class="sidebar" data-background-color="black" data-active-color="info">

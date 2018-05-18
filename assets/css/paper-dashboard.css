@@ -94,6 +94,23 @@ li {
       background: linear-gradient(violet,purple,indigo);
 }
 
+#login {
+  height: 100%;
+  width: 100%;
+    background: linear-gradient(rgb(36, 40, 45),rgba(0,0,0,0.5), rgba(0, 0, 0, 0.94)), url('https://png.pngtree.com/thumb_back/fw800/back_pic/03/61/33/4057a7355c095ac.jpg') fixed center center;
+    background-size: cover;
+    position: fixed;
+}
+
+.login-container {
+  margin-top: 100px;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 320px; 
+  height: 420px;
+  position: relative;
+}
+
 .text-muted {
   color: #DDDDDD; }
 
