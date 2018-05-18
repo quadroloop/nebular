@@ -75,23 +75,23 @@ function qcolor($req){
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./nebular-src/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="./nebular-src/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Paper Dashboard core CSS    -->
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-    <link href="nsrc/css/w3.css" rel="stylesheet"/>
+    <link href="./nebular-src/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="./nebular-src/css/w3.css" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="./nebular-src/css/demo.css" rel="stylesheet" />
 
 
     <!--  Fonts and icons     -->
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-    <script type="text/javascript" src="./nsrc/js/sweet-alert2.js"></script>
+    <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
+    <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
 
 </head>
 <body>
@@ -100,7 +100,7 @@ function qcolor($req){
     <div id="login">
        <center>
           <div class="login-container">
-                <img src="nebular.png" style="width:190px;margin:30px;"><br>
+                <img src="./nebular-src/img/nebular.png" style="width:190px;margin:30px;"><br>
                 <span class="text-dark">Nebular DB | Admin Login</span>
                 <div class="w3-margin">
                     <input class="w3-input w3-border w3-round" placeholder="Username"><br>
@@ -123,7 +123,7 @@ function qcolor($req){
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="https://github.com/quadroloop/nebular" class="simple-text">
-                    <img src="nebular.png" style="width:150px;">
+                    <img src="./nebular-src/img/nebular.png" style="width:150px;">
                 </a>
             </div>
 
@@ -226,11 +226,11 @@ function qcolor($req){
                           <div class="col-lg-4 col-md-5">
                         <div class="card card-user w3-card-4">
                             <div class="image">
-                                <img src="https://thumbs.gfycat.com/SingleSilkyFruitfly-size_restricted.gif" alt="..."/>
+                                <img src="./nebular-src/img/network.gif" alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                  <img class="avatar border-white" src="http://24.media.tumblr.com/tumblr_m8gn0kNV2Z1r4mh0bo1_500.gif" alt="..."/>
+                                  <img class="avatar border-white" src="./nebular-src/img/object.gif" alt="..."/>
                                   <h4 class="title">'.$obj_edit.'<br />
                                      <a class="w3-text-blue"><small>nebular database object</small></a>
                                   </h4>
@@ -552,11 +552,11 @@ function qcolor($req){
                     <div class="col-lg-4 col-md-5">
                         <div class="card card-user w3-card-4">
                             <div class="image">
-                                <img src="https://media.giphy.com/media/rXFl2JspcqupG/giphy.gif"  alt="..."/>
+                                <img src="./nebular-src/img/user_cover.gif"  alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                  <img class="avatar border-white bg-avatar" src="https://media.giphy.com/media/DapqwDuO1VB5K/giphy.gif" alt="..."/>
+                                  <img class="avatar border-white bg-avatar" src="./nebular-src/img/ghost.gif" alt="..."/>
                                   <h4 class="title">Bryce Mercines<br />
                                      <a href="#"><small>Nebular DB User</small></a>
                                   </h4>
@@ -654,11 +654,11 @@ function qcolor($req){
                     <div class="col-lg-4 col-md-5">
                         <div class="card card-user w3-card-4">
                             <div class="image">
-                                <img src="https://media1.tenor.com/images/d7c51a777e64169465b0d6a34ec42846/tenor.gif?itemid=7750127"  alt="..."/>
+                                <img src="./nebular-src/img/graph.gif"  alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                  <img class="avatar border-white bg-avatar" src="https://media.giphy.com/media/BGPSW6xEU9nG0/giphy.gif" alt="..."/>
+                                  <img class="avatar border-white bg-avatar" src="./nebular-src/img/geometry.gif" alt="..."/>
                                   <h4 class="title">Nebular API<br />
                                      <a href="#"><small>Nebular DB version 0.1</small></a>
                                   </h4>
@@ -693,7 +693,7 @@ function qcolor($req){
                                                echo '
                                                <li class="w3-bar">
       <span onclick="" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-      <img src="http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+      <img src="./nebular-src/img/query.gif" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
       <div class="w3-bar-item">
         <span class="w3-large"><i class="ti-bolt w3-text-blue"></i> '.$query[0].'</span><br>
         <span class="'.qcolor($query[1]).'"><i class="ti-control-record "></i> '.strtoupper($query[1]).'</span>
@@ -754,23 +754,23 @@ function qcolor($req){
 </body>
 
     <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./nebular-src/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="./nebular-src/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="assets/js/bootstrap-checkbox-radio.js"></script>
+    <script src="./nebular-src/js/bootstrap-checkbox-radio.js"></script>
 
     <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
+    <script src="./nebular-src/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+    <script src="./nebular-src/js/bootstrap-notify.js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-    <script src="assets/js/paper-dashboard.js"></script>
+    <script src="./nebular-src/js/paper-dashboard.js"></script>
 
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
+    <script src="./nebular-src/js/demo.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
