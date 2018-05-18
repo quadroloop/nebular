@@ -152,6 +152,12 @@ function qcolor($req){
                         <p>API</p>
                     </a>
                 </li>
+                <li id="api" onclick="nav(this);">
+                    <a onclick="logout()">
+                       <i class="ti-user"></i>
+                        <p>Log out</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -785,6 +791,10 @@ function qcolor($req){
         function nav(menu){
             document.getElementsByClassName('active')[0].classList.remove('active'); 
             menu.classList.add('active');
+        }
+
+        function logout() {
+            window.location = "?p=login"
         }
 
         function del(file,type){
