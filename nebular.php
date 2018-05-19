@@ -17,14 +17,30 @@ $user = $_SESSION['user'];
 $password = $_SESSION['password'];
 $page = $_GET['p'];
 
-// init
-// checkAuth();
+//login 
+$loguser = $_POST['username'];
+$logpassword = $_POST['password'];
+if(isset($loguser)){
+   if ($loguser == 'ghost' && $logpassword == 'lamepassword'){
+      $_SESSION['user'] = $loguser;
+      $_SESSION['password'] = $logpassword;
+      header('Location: nebular.php?p=dashboard');
+   }
+}
 
-function checkAuth(){
-    if(!isset($user) || !isset($password)){
-        if($page == 'login'){}else{
+if(isset($_GET['logout'])){
+    session_destroy();
+    header('Location: ?p=login');
+}
+
+// init
+checkAuthUI($page,$user,$password);
+
+function checkAuthUI($req,$usr,$pass){     
+    if(!isset($usr) || !isset($pass)){
+        if($req != 'login'){
               header("Location: ?p=login");
-        }
+              }       
     }
 }
 
@@ -100,17 +116,25 @@ function qcolor($req){
     <div id="login">
        <center>
           <div class="login-container">
+              <form action="nebular.php" method="POST">
                 <img src="./nebular-src/img/nebular.png" style="width:190px;margin:30px;"><br>
                 <span class="text-dark">Nebular DB | Admin Login</span>
                 <div class="w3-margin">
-                    <input class="w3-input w3-border w3-round" placeholder="Username"><br>
-                     <input class="w3-input w3-border w3-round" placeholder="Password" type="password">
+                    <input class="w3-input w3-border w3-round" name='username' placeholder="Username"><br>
+                     <input class="w3-input w3-border w3-round" name='password' placeholder="Password" type="password">
                 </div>
                 <button type="submit" class="w3-btn w3-black w3-round w3-margin">Log in</button><br>
                 <a href="https://github.com/quadroloop/nebular">Quadroloop | Nebular v. 0.1</a>
+             </form>   
           </div>
        </center> 
     </div>
+    <script>
+        window.onload = function() {
+            var x = document.getElementsByTagName('input')[0].focus();
+        }
+        
+    </script>
   </body>
   </html>       
  <?php 
@@ -787,7 +811,14 @@ function qcolor($req){
         }
 
         function logout() {
-            window.location = "?p=login"
+            swal({
+              timer: 1200,
+              title: 'Success',
+              text: 'You have logged out!',
+              type: 'success',
+              showConfirmButton: false
+            });
+            setTimeout("window.location = '?logout'",1200);
         }
 
         function del(file,type){
