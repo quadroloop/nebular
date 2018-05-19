@@ -17,6 +17,118 @@ $user = $_SESSION['user'];
 $password = $_SESSION['password'];
 $page = $_GET['p'];
 
+
+// API-v0.1 Section, all DB processes go here..
+
+// all request is POST request.
+if(isset($_POST['api'])){
+   // check if auth is ok.
+    if(isset($user) && isset($password)){
+       $queryX = $_POST['api'];
+       switch($queryX){
+          //create a database
+          case 'createDB' :
+             if(isset($_POST['db_name'])){
+                   $db = $_POST['db_name'];
+                   $dir = './nebular-src/vm/'.$db;
+                       if(!is_dir($dir)){
+                          mkdir($dir,0777,true);
+                          echo res('200','ok','DB created successfully.');
+                          exit();
+                       }else{
+                          echo res('401','Error','DB already exists');
+                          exit();
+                       }
+                 }else{
+                echo res('400','Bad Request','Incompete Parameters');
+                exit();
+             }
+          break;
+          // creating an object
+          case 'setObject' :
+              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                 file_put_contents($dir,$_POST['content']);
+                 chmod($dir,0777);
+                  echo res('200','OK','Object created successfully');
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
+           // append to object
+          case 'putObject' :
+              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                 file_put_contents($dir,$_POST['content'],FILE_APPEND);
+                  chmod($dir,0777);
+                  echo res('200','OK','Data added to object successfully');
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
+           // get object
+          case 'getObject' :
+              if(isset($_POST['db_name']) && isset($_POST['name'])){
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                  $data = file_get_contents($dir);
+                  echo res('200','OK',$data);
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
+          // drop DB
+           case 'dropDB' :
+               if(isset($_POST['db_name'])){
+                  if(is_dir('./nebular-src/vm/'.$_POST['db_name'])){
+                  $dir = './nebular-src/vm/'.$_POST['db_name'];
+                   $dbs = glob($dir.'/*');
+                   foreach ($dbs as $dobj) {
+                      unlink($dobj);
+                   }
+                  rmdir($dir);
+                  echo res('200','OK','Successfully drop Database.');
+                 exit();
+               }else{
+                 echo res('400','Bad Request','DB doesnt exist.');
+                 exit();
+               }
+               }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+               }
+           break;  
+           // Delete Object
+            case 'deleteObject' :
+              if(isset($_POST['db_name']) && isset($_POST['name'])){
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                   unlink($dir);
+                  echo res('200','OK','Object Deleted.');
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;  
+          default :
+              echo res('200','OK','Nebular API v. 0.1');
+              exit();
+       }
+    }else{
+        echo res('500','Error','Bad Request Auth. failed.');
+        exit();
+    }
+    exit();
+}
+
+// end of API
+
+
 //login 
 $loguser = $_POST['username'];
 $logpassword = $_POST['password'];
@@ -24,17 +136,35 @@ if(isset($loguser)){
    if ($loguser == 'ghost' && $logpassword == 'lamepassword'){
       $_SESSION['user'] = $loguser;
       $_SESSION['password'] = $logpassword;
+      if(isset($page)){
       header('Location: nebular.php?p=dashboard');
+      }else{
+        echo res('200','OK','Session is active');
+        exit();
+      }
    }
 }
 
+//log out
 if(isset($_GET['logout'])){
     session_destroy();
     header('Location: ?p=login');
 }
 
+
+// http responses
+function res($code,$msg,$data){
+    $resdata = array(
+        "status" => $code,
+        "message" => $msg,
+        "data" => $data
+        );
+    return json_encode($resdata);
+}
+
 // init
 checkAuthUI($page,$user,$password);
+
 
 function checkAuthUI($req,$usr,$pass){     
     if(!isset($usr) || !isset($pass)){
@@ -46,17 +176,18 @@ function checkAuthUI($req,$usr,$pass){
 
 // register api routes
 $api_queries = array(
-    "create_db,post",
-    "get_object,get",
-    "db_connect,put",
-    "create_db,delete",
-    "get_object,post",
-    "db_connect,get"
+    "createdDB,post",
+    "setObject,post",
+    "putObject,post",
+    "getObject,post",
+    "deleteObject,post"
     );
+
+
 
 //remove directory slashes
 function ndir($var) {
-  return str_replace('./', '', $var);
+  return str_replace('./nebular-src/vm/', '', $var);
 }
 
 // select request color
@@ -116,7 +247,7 @@ function qcolor($req){
     <div id="login">
        <center>
           <div class="login-container">
-              <form action="nebular.php" method="POST">
+              <form action="nebular.php?p=dashboard" method="POST">
                 <img src="./nebular-src/img/nebular.png" style="width:190px;margin:30px;"><br>
                 <span class="text-dark">Nebular DB | Admin Login</span>
                 <div class="w3-margin">
@@ -133,7 +264,7 @@ function qcolor($req){
         window.onload = function() {
             var x = document.getElementsByTagName('input')[0].focus();
         }
-        
+
     </script>
   </body>
   </html>       
@@ -259,7 +390,7 @@ function qcolor($req){
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-1">
-                                        <br><a href="?p=databases&db='.$db_focus.'" class="btn btn-info">Back to DB</a><br>
+                                        <br><a href="?p=databases&db='.explode('/',$db_focus)[0].'" class="btn btn-info">Back to DB</a><br>
                                     </div>
                                     <div class="col-md-3 col-md-offset-1">
                                         <br><a onclick="del(&apos;'.$obj_edit.'&apos;,&apos;1&apos;)" class="btn btn-danger"><i class="ti-trash"></i> Delete Object</a><br><br>
@@ -279,7 +410,7 @@ function qcolor($req){
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Object Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Object Name" value="'.$obj_edit
+                                                <input type="text" class="form-control border-input" placeholder="Object Name" value="'.explode('/', $obj_edit)[1]
                                                 .'">
                                             </div>
                                         </div>
@@ -288,7 +419,7 @@ function qcolor($req){
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Content</label>
-                                                <textarea rows="15" class="form-control border-input" placeholder="Here can be your description">'.htmlspecialchars(file_get_contents($obj_edit)).'</textarea>
+                                                <textarea rows="15" class="form-control border-input" placeholder="Here can be your description">'.htmlspecialchars(file_get_contents('./nebular-src/vm/'.$obj_edit)).'</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -319,7 +450,7 @@ function qcolor($req){
 
 
                      $datafiles = "*";
-    $directory = "./";
+    $directory = "./nebular-src/vm/".$db_focus."/";
      $dbs = glob($directory . $datafiles);
      echo '<ul id="dblist" style="list-style:none;" class="list-unstyled">';
     foreach($dbs as $db) {
@@ -337,7 +468,7 @@ function qcolor($req){
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>'.ndir($db).'</p>
+                                            <p>'.explode('/',$db)[4].'</p>
                                             '.rand(1,1000).'
                                         </div>
                                     </div>
@@ -361,7 +492,7 @@ function qcolor($req){
 
                   }else {
     $datafiles = "*";
-    $directory = "./";
+    $directory = "./nebular-src/vm/";
      $dbs = glob($directory . $datafiles);
     foreach($dbs as $db)
     {
@@ -573,7 +704,7 @@ function qcolor($req){
                             <div class="content">
                                 <div class="author">
                                   <img class="avatar border-white bg-avatar" src="./nebular-src/img/ghost.gif" alt="..."/>
-                                  <h4 class="title">Bryce Mercines<br />
+                                  <h4 class="title"><?php echo $user; ?><br />
                                      <a href="#"><small>Nebular DB User</small></a>
                                   </h4>
                                 </div>
@@ -610,7 +741,7 @@ function qcolor($req){
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Current Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="Current Password">
+                                                <input type="text" class="form-control border-input" placeholder="Current Username">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
