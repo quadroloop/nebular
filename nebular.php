@@ -447,9 +447,8 @@ function qcolor($req){
                       </div>
                     </div>
                         ';
-
-
-                     $datafiles = "*";
+    $obj_count = 0;
+    $datafiles = "*";
     $directory = "./nebular-src/vm/".$db_focus."/";
      $dbs = glob($directory . $datafiles);
      echo '<ul id="dblist" style="list-style:none;" class="list-unstyled">';
@@ -486,11 +485,22 @@ function qcolor($req){
                     </a>
                     </li>
                       ';
+                     $obj_count++; 
                   }
+                   if($obj_count == 0) {
+                    echo '
+                    <div class="w3-margin">
+                       <h4><i class="ti-wallet"></i> No Objects</h4>
+                       <span>click here to <a class="w3-btn w3-border w3-round"><i class="ti-plus"></i> Add Object</a></span>
+                    </div>
+                    ';
+                 } 
                  echo '</ul>'; 
+
                 }  
 
                   }else {
+     $db_count = 0;               
     $datafiles = "*";
     $directory = "./nebular-src/vm/";
      $dbs = glob($directory . $datafiles);
@@ -523,7 +533,16 @@ function qcolor($req){
                         </div>
                     </div>
                       ';
+                      $db_count++;
                   }
+                  if($db_count == 0) {
+                    echo '
+                    <div class="w3-margin">
+                       <h4><i class="ti-server"></i> No Databases</h4>
+                       <span>click here to <a class="w3-btn w3-border w3-round"><i class="ti-plus"></i> Add Database</a></span>
+                    </div>
+                    ';
+                 } 
               }
                    ?>
                  </div>
