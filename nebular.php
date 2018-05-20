@@ -506,6 +506,7 @@ function qcolor($req){
      $dbs = glob($directory . $datafiles);
     foreach($dbs as $db)
     {
+        if(is_dir($db)){
                       echo '
                        <div class="col-lg-3 col-sm-6">
                         <div class="card w3-card-4">
@@ -534,6 +535,7 @@ function qcolor($req){
                     </div>
                       ';
                       $db_count++;
+                  }
                   }
                   if($db_count == 0) {
                     echo '
