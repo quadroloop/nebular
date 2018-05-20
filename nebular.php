@@ -18,6 +18,15 @@ $password = $_SESSION['password'];
 $page = $_GET['p'];
 
 
+//registered api queries
+// register api routes
+$api_queries = array(
+    "createdDB,post",
+    "setObject,post",
+    "putObject,post",
+    "getObject,post",
+    "deleteObject,post"
+    );
 
 
 if(isset($_POST['uAuth'])){
@@ -134,6 +143,35 @@ if(isset($_POST['api'])){
                  echo res('400','Bad Request','Incompete Parameters');
                  exit();
               }   
+          break;
+          // get stats
+          case 'getStats' :
+              $db_count = 0;
+              $object_count = 0;
+              $query_count = count($api_queries);
+              $req_count = 0;
+               // count DB;
+              $d1 = './nebular-src/vm/*';
+              $dba = glob($d1);
+                  foreach ($dba as $dbc) {
+                      if(is_dir($dbc)){
+                      $db_count++;
+                      $d2 = './nebular-src/vm/db_pamo/*';
+                          $obj = glob($d2);
+                             foreach ($obj as $obji) {
+                                 $object_count++;
+                             }
+                         }
+                  }    
+              //send reponse
+              $stats = array(
+                "db" => $db_count,
+                "objects" => $object_count,
+                "queries" => $query_count,
+                "request" => $req_count
+                );
+              echo json_encode($stats);
+              exit();
           break;  
           default :
               echo res('200','OK','Nebular API v. 0.1');
@@ -196,14 +234,6 @@ function checkAuthUI($req,$usr,$pass){
     }
 }
 
-// register api routes
-$api_queries = array(
-    "createdDB,post",
-    "setObject,post",
-    "putObject,post",
-    "getObject,post",
-    "deleteObject,post"
-    );
 
 
 
@@ -592,7 +622,7 @@ function qcolor($req){
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Databases</p>
-                                            15
+                                            <span id="db"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -617,7 +647,7 @@ function qcolor($req){
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Objects</p>
-                                            123
+                                            <span id="obj"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -642,7 +672,7 @@ function qcolor($req){
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Queries</p>
-                                            23
+                                            <span id="q"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -667,7 +697,7 @@ function qcolor($req){
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Requests</p>
-                                            43
+                                            <span id="req"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -731,6 +761,23 @@ function qcolor($req){
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            setInterval(function(){
+    xhr = new XMLHttpRequest();
+xhr.open('POST', 'nebular.php');
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        var res = xhr.response;
+         var res1 = res.replace('{',);
+    }
+    else if (xhr.status !== 200) {
+        alert('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send('api=getStats');
+            },2000);
+        </script>
        <?php endif; ?>
 
        <?php if($page == 'credentials'): ?>
