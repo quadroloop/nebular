@@ -18,6 +18,26 @@ $password = $_SESSION['password'];
 $page = $_GET['p'];
 
 
+
+
+if(isset($_POST['uAuth'])){
+    $usr1 = $_POST['usr1'];
+    $usr2 = $_POST['psw1'];
+    $psw1 = $_POST['usr2'];
+    $psw2 = $_POST['psw2'];
+
+    if($usr1 == $_SESSION['user'] && $psw == $SESSION['password']){
+        echo res('200','OK','Update auth is allowed');
+        exit();
+    }else{
+        echo res('500','ERROR','Update auth failed!');
+        exit();
+    }
+
+
+    // if ($loguser == 'ghost' && $logpassword == 'lamepassword'){}
+}
+
 // API-v0.1 Section, all DB processes go here..
 
 // all request is POST request.
@@ -145,6 +165,8 @@ if(isset($loguser)){
    }
 }
 
+
+
 //log out
 if(isset($_GET['logout'])){
     session_destroy();
@@ -239,6 +261,8 @@ function qcolor($req){
     <!--  Fonts and icons     -->
     <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
+    <script type="text/javascript" src="./nebular-src/js/axios.min.js"></script>
+
 
 </head>
 <body>
@@ -251,8 +275,8 @@ function qcolor($req){
                 <img src="./nebular-src/img/nebular.png" style="width:190px;margin:30px;"><br>
                 <span class="text-dark">Nebular DB | Admin Login</span>
                 <div class="w3-margin">
-                    <input class="w3-input w3-border w3-round" name='username' placeholder="Username"><br>
-                     <input class="w3-input w3-border w3-round" name='password' placeholder="Password" type="password">
+                    <input class="w3-input w3-border w3-round" name='username' placeholder="Username" required><br>
+                     <input class="w3-input w3-border w3-round" name='password' placeholder="Password" type="password" required>
                 </div>
                 <button type="submit" class="w3-btn w3-black w3-round w3-margin">Log in</button><br>
                 <a href="https://github.com/quadroloop/nebular">Quadroloop | Nebular v. 0.1</a>
@@ -307,12 +331,6 @@ function qcolor($req){
                         <p>API</p>
                     </a>
                 </li>
-                <li id="api" onclick="nav(this);">
-                    <a onclick="logout()">
-                       <i class="ti-user"></i>
-                        <p>Log out</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -342,6 +360,8 @@ function qcolor($req){
                                 <li><a href="#"><i class="ti-plus"></i> Add Object</a></li>
                                 <li><a href="#"><i class="ti-trash"></i> Drop Object</a></li>
                                 <li><a href="#"><i class="ti-trash"></i> Drop Database</a></li>
+                                <li><a onclick="logout();"><i class="ti-user"></i> Log out</a></li>
+
                               </ul>
                         </li>
                         <li>
@@ -733,20 +753,6 @@ function qcolor($req){
                                   Administrator
                                 </p>
                             </div>
-                            <hr>
-                            <div class="text-center">
-                                <div class="row">
-                                    <div class="col-md-3 col-md-offset-1">
-                                        <h5>12<br /><small>Databases</small></h5>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5>2GB<br /><small>Objects</small></h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h5>24,6$<br /><small>Queries</small></h5>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         
              
@@ -757,18 +763,18 @@ function qcolor($req){
                                 <h4 class="title"><i class="ti-user"></i> Update Credentials</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                 <form action="nebular.php" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Current Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="Current Username">
+                                                <input type="text" name="usr1" class="form-control border-input" placeholder="Current Username" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Current Password</label>
-                                                <input type="text" class="form-control border-input" placeholder="Current Password">
+                                                <input type="password" name="psw1" class="form-control border-input" placeholder="Current Password" required>
                                             </div>
                                         </div>
                                     </div>
@@ -776,13 +782,13 @@ function qcolor($req){
                                       <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>New Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="New Username">
+                                                <input type="text" name="usr2" class="form-control border-input" placeholder="New Username" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>New Password</label>
-                                                <input type="text" class="form-control border-input" placeholder="New Password">
+                                                <input type="password" name="psw2" class="form-control border-input" placeholder="New Password" required>
                                             </div>
                                         </div>
                                     </div>
@@ -791,17 +797,17 @@ function qcolor($req){
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>API Key</label>
-                                                <input type="text" class="form-control border-input" placeholder="API Key" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT); ?>">
+                                                <input type="text" class="form-control border-input" placeholder="API Key" name="uAuth" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT); ?>">
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Credentials</button>
+                                        <button class="btn btn-info btn-fill btn-wd" type="submit"><i class="ti-bolt"></i> Update Credentials</button>
                                     </div>
                                     <div class="clearfix"></div>
-                                </form>
+                                 </form>   
                             </div>
                         </div>
                     </div>
@@ -810,6 +816,7 @@ function qcolor($req){
                 </div>
             </div>
         </div>
+
        <?php endif; ?>
 
        <?php
@@ -956,6 +963,7 @@ function qcolor($req){
 
         });
 
+       
 
         function nav(menu){
             document.getElementsByClassName('active')[0].classList.remove('active'); 
