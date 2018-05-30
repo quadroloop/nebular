@@ -276,9 +276,6 @@ function qcolor($req){
     <link href="./nebular-src/css/paper-dashboard.css" rel="stylesheet"/>
     <link href="./nebular-src/css/w3.css" rel="stylesheet"/>
     <link href="./nebular-src/css/demo.css" rel="stylesheet" />
-
-
-    <!--  Fonts and icons     -->
     <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
     <script type="text/javascript" src="./nebular-src/js/axios.min.js"></script>
