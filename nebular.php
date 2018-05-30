@@ -275,9 +275,6 @@ function qcolor($req){
     <link href="./nebular-src/css/animate.min.css" rel="stylesheet"/>
     <link href="./nebular-src/css/paper-dashboard.css" rel="stylesheet"/>
     <link href="./nebular-src/css/w3.css" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="./nebular-src/css/demo.css" rel="stylesheet" />
 
 
