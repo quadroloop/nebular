@@ -271,7 +271,6 @@ function qcolor($req){
     <meta name="viewport" content="width=device-width" />
 
 
-    <!-- Bootstrap core CSS     -->
     <link href="./nebular-src/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
