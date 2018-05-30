@@ -273,8 +273,6 @@ function qcolor($req){
 
     <link href="./nebular-src/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./nebular-src/css/animate.min.css" rel="stylesheet"/>
-
-    <!--  Paper Dashboard core CSS    -->
     <link href="./nebular-src/css/paper-dashboard.css" rel="stylesheet"/>
     <link href="./nebular-src/css/w3.css" rel="stylesheet"/>
 
