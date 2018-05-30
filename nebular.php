@@ -43,8 +43,6 @@ if(isset($_POST['uAuth'])){
         exit();
     }
 
-
-    // if ($loguser == 'ghost' && $logpassword == 'lamepassword'){}
 }
 
 // API-v0.1 Section, all DB processes go here..
