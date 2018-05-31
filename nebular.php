@@ -21,11 +21,12 @@ $page = $_GET['p'];
 //registered api queries
 // register api routes
 $api_queries = array(
-    "createdDB,post",
-    "setObject,post",
-    "putObject,post",
-    "getObject,post",
-    "deleteObject,post"
+    "createdDB,get",
+    "setObject,get",
+    "putObject,get",
+    "getObject,get",
+    "deleteObject,get",
+    "dropDB,get"
     );
 
 
