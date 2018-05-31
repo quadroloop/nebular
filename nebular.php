@@ -30,6 +30,7 @@ $api_queries = array(
     );
 
 
+
 if(isset($_POST['uAuth'])){
     $usr1 = $_POST['usr1'];
     $usr2 = $_POST['psw1'];
