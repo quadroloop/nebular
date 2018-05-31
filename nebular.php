@@ -926,7 +926,7 @@ function qcolor($req){
 
 
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Credentials</button>
+                                       <!--  <button type="button" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Credentials</button> -->
                                     </div>
                                     <div class="clearfix"></div>
                             </div>
