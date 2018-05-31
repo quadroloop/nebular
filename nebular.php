@@ -184,8 +184,6 @@ if(isset($_GET['api'])){
 }
 
 // end of API
-// end of API
-
 
 //login 
 $loguser = $_POST['username'];
