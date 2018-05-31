@@ -47,16 +47,16 @@ if(isset($_POST['uAuth'])){
 
 // API-v0.1 Section, all DB processes go here..
 
-// all request is POST request.
-if(isset($_POST['api'])){
+// all request is GET request.
+if(isset($_GET['api'])){
    // check if auth is ok.
     if(isset($user) && isset($password)){
-       $queryX = $_POST['api'];
+       $queryX = $_GET['api'];
        switch($queryX){
           //create a database
           case 'createDB' :
-             if(isset($_POST['db_name'])){
-                   $db = $_POST['db_name'];
+             if(isset($_GET['db_name'])){
+                   $db = $_GET['db_name'];
                    $dir = './nebular-src/vm/'.$db;
                        if(!is_dir($dir)){
                           mkdir($dir,0777,true);
@@ -73,9 +73,9 @@ if(isset($_POST['api'])){
           break;
           // creating an object
           case 'setObject' :
-              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
-                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
-                 file_put_contents($dir,$_POST['content']);
+              if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
+                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
+                 file_put_contents($dir,$_GET['content']);
                  chmod($dir,0777);
                   echo res('200','OK','Object created successfully');
                  exit(); 
@@ -86,9 +86,9 @@ if(isset($_POST['api'])){
           break;
            // append to object
           case 'putObject' :
-              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
-                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
-                 file_put_contents($dir,$_POST['content'],FILE_APPEND);
+              if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
+                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
+                 file_put_contents($dir,$_GET['content'],FILE_APPEND);
                   chmod($dir,0777);
                   echo res('200','OK','Data added to object successfully');
                  exit(); 
@@ -99,8 +99,8 @@ if(isset($_POST['api'])){
           break;
            // get object
           case 'getObject' :
-              if(isset($_POST['db_name']) && isset($_POST['name'])){
-                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+              if(isset($_GET['db_name']) && isset($_GET['name'])){
+                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                   $data = file_get_contents($dir);
                   echo res('200','OK',$data);
                  exit(); 
@@ -111,9 +111,9 @@ if(isset($_POST['api'])){
           break;
           // drop DB
            case 'dropDB' :
-               if(isset($_POST['db_name'])){
-                  if(is_dir('./nebular-src/vm/'.$_POST['db_name'])){
-                  $dir = './nebular-src/vm/'.$_POST['db_name'];
+               if(isset($_GET['db_name'])){
+                  if(is_dir('./nebular-src/vm/'.$_GET['db_name'])){
+                  $dir = './nebular-src/vm/'.$_GET['db_name'];
                    $dbs = glob($dir.'/*');
                    foreach ($dbs as $dobj) {
                       unlink($dobj);
@@ -132,8 +132,8 @@ if(isset($_POST['api'])){
            break;  
            // Delete Object
             case 'deleteObject' :
-              if(isset($_POST['db_name']) && isset($_POST['name'])){
-                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+              if(isset($_GET['db_name']) && isset($_GET['name'])){
+                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                    unlink($dir);
                   echo res('200','OK','Object Deleted.');
                  exit(); 
@@ -182,6 +182,7 @@ if(isset($_POST['api'])){
     exit();
 }
 
+// end of API
 // end of API
 
 
@@ -749,22 +750,22 @@ function qcolor($req){
             </div>
         </div>
         <script type="text/javascript">
-            setInterval(function(){
-    xhr = new XMLHttpRequest();
-xhr.open('POST', 'nebular.php');
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.onload = function() {
-    if (xhr.status === 200) {
-        var res = xhr.response;
-         var res1 = res.replace('{',);
-    }
-    else if (xhr.status !== 200) {
-        alert('Request failed.  Returned status of ' + xhr.status);
-    }
-};
-xhr.send('api=getStats');
-            },2000);
-        </script>
+             setInterval(function(){
+                     axios.get('nebular.php?api=getStats')
+                       .then(function (response) {
+                           document.getElementById('db').innerText = response.data['db'];
+                           document.getElementById('obj').innerText = response.data['objects'];
+                           document.getElementById('q').innerText = response.data['queries'];
+                           document.getElementById('req').innerText = response.data['request'];
+                      })
+                        .catch(function (error) {
+                          console.log(error);
+                      });
+
+             },200);
+
+        
+        </script>     
        <?php endif; ?>
 
        <?php if($page == 'credentials'): ?>
