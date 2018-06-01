@@ -708,8 +708,8 @@ function qcolor($req){
                             </div>
                             <div class="content">
                               <!-- data -->
-                                  <div class="w3-round w3-black w3-container w3-padding w3-small" style="height:150px;">
-                                    <p>Hello</p>
+                                  <div class="w3-round w3-black w3-container w3-padding w3-small" style="height:220px;">
+                                    <a class="w3-text-green"><i class="fa fa-circle"></i> GET : </a>
                                   </div>
                               <!-- data end -->
                                 <div class="footer">
