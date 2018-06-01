@@ -165,7 +165,7 @@ if(isset($_GET['api'])){
               //send reponse
               $stats = array(
                 "db" => $db_count,
-                "objects" => $object_count,
+                "objects" => $object_count/$db_count,
                 "queries" => $query_count,
                 "request" => $req_count
                 );
@@ -708,33 +708,9 @@ function qcolor($req){
                             </div>
                             <div class="content">
                               <!-- data -->
-                                <table class="w3-table-all">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Points</th>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td>
-      <td>94</td>
-    </tr>
-    <tr>
-      <td>Adam</td>
-      <td>Johnson</td>
-      <td>67</td>
-    </tr>
-    <tr>
-      <td>Bo</td>
-      <td>Nilson</td>
-      <td>35</td>
-    </tr>
-  </table>
+                                  <div class="w3-round w3-black w3-container w3-padding w3-small" style="height:150px;">
+                                    <p>Hello</p>
+                                  </div>
                               <!-- data end -->
                                 <div class="footer">
                                     <hr>
