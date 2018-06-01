@@ -13,9 +13,14 @@ https://github.com/quadroloop/nebular
 
 session_start();
 
+$request_type = $_SERVER['REQUEST_METHOD'];
+$request = $request_type.'#'.$_SERVER['HTTP_REFERER'];
+file_put_contents('./nebular-src/req.nebular',$request);
+
 $user = $_SESSION['user'];
 $password = $_SESSION['password'];
 $page = $_GET['p'];
+
 
 
 //registered api queries
@@ -148,7 +153,6 @@ if(isset($_GET['api'])){
               $db_count = 0;
               $object_count = 0;
               $query_count = count($api_queries);
-              $req_count = 0;
                // count DB;
               $d1 = './nebular-src/vm/*';
               $dba = glob($d1);
@@ -167,10 +171,19 @@ if(isset($_GET['api'])){
                 "db" => $db_count,
                 "objects" => $object_count/$db_count,
                 "queries" => $query_count,
-                "request" => $req_count
                 );
               echo json_encode($stats);
               exit();
+          break;
+         case 'getRequests' :
+            $req1 = file_get_contents('./nebular-src/req.nebular');
+            $req_type = explode('#',$req1);
+            $res = array(
+                "status" => "200 OK",
+                "type" => $req_type[0],
+                "data"=> htmlspecialchars($req_type[2])
+              );
+            echo json_encode($res);   
           break;  
           default :
               echo res('200','OK','Nebular API v. 0.1');
@@ -709,7 +722,7 @@ function qcolor($req){
                             <div class="content">
                               <!-- data -->
                                   <div class="w3-round w3-black w3-container w3-padding w3-small" style="height:220px;">
-                                    <a class="w3-text-green"><i class="ti-bolt"></i> GET : </a>
+                                    <a class="w3-text-green"><i class="ti-bolt"></i> GET : http://192.168.1.6:80/nebular.php?api=createDB </a>
                                   </div>
                               <!-- data end -->
                                 <div class="footer">
@@ -731,7 +744,6 @@ function qcolor($req){
                            document.getElementById('db').innerText = response.data['db'];
                            document.getElementById('obj').innerText = response.data['objects'];
                            document.getElementById('q').innerText = response.data['queries'];
-                           document.getElementById('req').innerText = response.data['request'];
                       })
                         .catch(function (error) {
                           console.log(error);
@@ -940,15 +952,7 @@ function qcolor($req){
     <script src="./nebular-src/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script src="./nebular-src/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="./nebular-src/js/bootstrap-checkbox-radio.js"></script>
-
-    <!--  Charts Plugin -->
-    <script src="./nebular-src/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="./nebular-src/js/bootstrap-notify.js"></script>
-
+   
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
     <script src="./nebular-src/js/paper-dashboard.js"></script>
 
@@ -956,23 +960,7 @@ function qcolor($req){
     <script src="./nebular-src/js/demo.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-
-            // demo.initChartist();
-
-            // $.notify({
-            //     icon: 'ti-bolt',
-            //     message: "<b>Welcome to Nebular!</b> An experimental database application based on PHP and Javascript. Currently at version 0.1"
-
-            // },{
-            //     type: 'success',
-            //     timer: 1000
-            // });
-
-        });
-
-       
-
+      
         function nav(menu){
             document.getElementsByClassName('active')[0].classList.remove('active'); 
             menu.classList.add('active');
