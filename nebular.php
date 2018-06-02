@@ -430,8 +430,6 @@ if($page == 'login'): ?>
                               <ul class="dropdown-menu">
                                 <li><a onclick="dbAdd();"><i class="ti-plus"></i> Add Database</a></li>
                                 <li><a onclick="objAdd();"><i class="ti-plus"></i> Add Object</a></li>
-                                <li><a onclick="objDrop();"><i class="ti-trash"></i> Drop Object</a></li>
-                                <li><a onclick="dbDrop();"><i class="ti-trash"></i> Drop Database</a></li>
                                 <li><a onclick="logout();"><i class="ti-user"></i> Log out</a></li>
 
                               </ul>
@@ -472,7 +470,6 @@ if($page == 'login'): ?>
                       echo '<script>nb_DB = "'.$db_focus.'";</script>';
                       if(isset($obj_edit)){
                          echo '<script>nb_DB = "'.explode('/',$db_focus)[0].'";</script>';
-                        // editing object
                         echo '
                           <div class="col-lg-4 col-md-5">
                         <div class="card card-user w3-card-4">
@@ -509,13 +506,15 @@ if($page == 'login'): ?>
                                 <h4 class="title"><i class="ti-bolt"></i> Update Object</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form >
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Object Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Object Name" value="'.explode('/', $obj_edit)[1]
+                                                <input id="ed0" type="text" name="name" class="form-control border-input" placeholder="Object Name" value="'.explode('/', $obj_edit)[1]
                                                 .'">
+                                                <input id="ed1" name="db_name" value="'.explode('/',$obj_edit)[0].'" class="w3-hide">
+                                                <input id="ed2" name="api" value="setObject" class="w3-hide">
                                             </div>
                                         </div>
                                     </div>
@@ -523,12 +522,12 @@ if($page == 'login'): ?>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Content</label>
-                                                <textarea rows="15" class="form-control border-input" placeholder="Object Content">'.htmlspecialchars(file_get_contents('./nebular-src/vm/'.$obj_edit)).'</textarea>
+                                                <textarea id="ed3" rows="15" name="content" class="form-control border-input" placeholder="Object Content">'.htmlspecialchars(file_get_contents('./nebular-src/vm/'.$obj_edit)).'</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Object</button>
+                                        <button onclick="subnet();" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Object</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
@@ -595,7 +594,7 @@ if($page == 'login'): ?>
                     echo '
                     <div class="w3-margin">
                        <h4><i class="ti-wallet"></i> No Objects</h4>
-                       <span>click here to <a class="w3-btn w3-border w3-round"><i class="ti-plus"></i> Add Object</a></span>
+                       <span>click here to <a class="w3-btn w3-border w3-round" onclick="objAdd();"><i class="ti-plus"></i> Add Object</a></span>
                     </div>
                     ';
                  } 

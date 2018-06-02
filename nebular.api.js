@@ -94,7 +94,14 @@ function nb_delete(name){
 	
 }
 
+// request auth()
 
+function nbauth(){
+	axios.post('nebular.php',jQuery.param( {
+    username: 'root',
+    password: 'admin'
+  }));
+}
 
 
 
