@@ -437,13 +437,13 @@ if($page == 'login'): ?>
                               </ul>
                         </li>
                          <li class="dropdown">
-                              <a href="?dreq" class="dropdown-toggle" data-toggle="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-settings"></i>
                                     <p>Settings</p>
                                     <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#"><i class="ti-trash"></i> Delete Request Memory</a></li>
+                                <li><a href="nebular.php?dreq"><i class="ti-trash"></i> Delete Request Memory</a></li>
                               </ul>
                         </li>
                     </ul>
