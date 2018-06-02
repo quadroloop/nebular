@@ -1072,8 +1072,10 @@ if($page == 'login'): ?>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>API Key</label>
-                                                <input type="text" class="form-control border-input" placeholder="API Key" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT); ?>">
+                                                <label class="w3-btn w3-round w3-black">Register API Key</label>
+                                                <br>
+                                                <br>
+                                                <input type="text" class="form-control border-input" placeholder="API Key" value="<?php echo sha1('what'); ?>">
                                             </div>
                                         </div>
                                     </div>
