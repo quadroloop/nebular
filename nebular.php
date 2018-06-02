@@ -35,21 +35,34 @@ $api_queries = array(
 
 if(isset($_POST['uAuth'])){
     $usr1 = $_POST['usr1'];
-    $usr2 = $_POST['psw1'];
-    $psw1 = $_POST['usr2'];
+    $usr2 = $_POST['usr2'];
+    $psw1 = $_POST['psw1'];
     $psw2 = $_POST['psw2'];
 
-    if($usr1 == $_SESSION['user'] && $psw == $SESSION['password']){
-        echo res('200','OK','Update auth is allowed');
-        exit();
-    }else{
-        echo res('500','ERROR','Update auth failed!');
-        exit();
-    }
+
+   if($usr1 == $user && $psw2 == $password){
+      
+   }else{
+     echo res('500','ERROR','Update auth failed!');
+     header('location: nebular.php?p=credentials');
+   }
+
+ exit();
+
+    // if($usr1 == $_SESSION['user'] && $psw1 == $SESSION['password']){
+    //     echo res('200','OK','Update auth is allowed');
+
+    //     exit();
+    // }else{
+    //     echo res('500','ERROR','Update auth failed!');
+    //     exit();
+    // }
 
 }
 
 // API-v0.1 Section, all DB processes go here..
+$s1 = password_hash('ghost', PASSWORD_BCRYPT);
+$s2 = password_hash('lamepassword', PASSWORD_BCRYPT);
 function reqCapture() {
    $reqd = file_get_contents('./nebular-src/req.nebular');
        $reqadd = (int)$reqd+1;
@@ -211,7 +224,7 @@ if(isset($_GET['api'])){
 $loguser = $_POST['username'];
 $logpassword = $_POST['password'];
 if(isset($loguser)){
-   if ($loguser == 'ghost' && $logpassword == 'lamepassword'){
+   if (password_verify($loguser, $s1) && password_verify($logpassword, $s2)){
       $_SESSION['user'] = $loguser;
       $_SESSION['password'] = $logpassword;
       if(isset($page)){
