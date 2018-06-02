@@ -12,7 +12,7 @@ https://github.com/quadroloop/nebular
 */
 
 session_start();
-
+require('./nebular-src/nebular.auth.php');
 
 $user = $_SESSION['user'];
 $password = $_SESSION['password'];
@@ -40,29 +40,39 @@ if(isset($_POST['uAuth'])){
     $psw2 = $_POST['psw2'];
 
 
-   if($usr1 == $user && $psw2 == $password){
-      
+   if($usr1 == $user && $psw1 == $password){
+      $authfile = file_get_contents('./nebular-src/nebular.auth.php');
+      $ou = "password_hash('".$usr1."', PASSWORD_BCRYPT);";
+      $op = "password_hash('".$psw1."', PASSWORD_BCRYPT);";
+      $nu = "password_hash('".$usr2."', PASSWORD_BCRYPT);";
+      $np = "password_hash('".$psw2."', PASSWORD_BCRYPT);";
+      $nauth1 = str_replace($ou,$nu,$authfile);
+      $nauth2 = str_replace($op,$np,$nauth1);
+      file_put_contents('./nebular-src/nebular.auth.php',$nauth2);
+      if(isset($page)){
+      echo '<script>
+               window.location = "nebular.php?logout";
+            </script>';
+       }else{
+         echo res('200','OK','Update Credetials Successfully!');
+         exit();
+       }     
    }else{
-     echo res('500','ERROR','Update auth failed!');
-     header('location: nebular.php?p=credentials');
+      if(isset($page)){
+      echo '<script>
+               window.location = "nebular.php?p=credentials";
+            </script>';
+       }else{
+         echo res('500','Error','Auth Failed');
+         exit();
+       }     
    }
 
  exit();
 
-    // if($usr1 == $_SESSION['user'] && $psw1 == $SESSION['password']){
-    //     echo res('200','OK','Update auth is allowed');
-
-    //     exit();
-    // }else{
-    //     echo res('500','ERROR','Update auth failed!');
-    //     exit();
-    // }
-
 }
 
 // API-v0.1 Section, all DB processes go here..
-$s1 = password_hash('ghost', PASSWORD_BCRYPT);
-$s2 = password_hash('lamepassword', PASSWORD_BCRYPT);
 function reqCapture() {
    $reqd = file_get_contents('./nebular-src/req.nebular');
        $reqadd = (int)$reqd+1;
@@ -322,7 +332,9 @@ function qcolor($req){
 </head>
 <body>
 
-<?php if($page == 'login'): ?>
+<?php
+if($page == 'login'): ?>
+
     <div id="login">
        <center>
           <div class="login-container">
@@ -934,7 +946,7 @@ function qcolor($req){
                                 <h4 class="title"><i class="ti-user"></i> Update Credentials</h4>
                             </div>
                             <div class="content">
-                                 <form action="nebular.php" method="POST">
+                                 <form action="nebular.php?p" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
