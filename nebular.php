@@ -518,7 +518,7 @@ if($page == 'login'): ?>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Content</label>
-                                                <textarea rows="15" class="form-control border-input" placeholder="Here can be your description">'.htmlspecialchars(file_get_contents('./nebular-src/vm/'.$obj_edit)).'</textarea>
+                                                <textarea rows="15" class="form-control border-input" placeholder="Object Content">'.htmlspecialchars(file_get_contents('./nebular-src/vm/'.$obj_edit)).'</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@ if($page == 'login'): ?>
             </div>      
    <?php endif; ?>
     
-    
+
 
    <?php
      // Dashboard Page
