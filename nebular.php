@@ -254,6 +254,11 @@ if(isset($_GET['logout'])){
     header('Location: ?p=login');
 }
 
+// delete memory of requests file
+if(isset($_GET['dreq'])){
+   file_put_contents('./nebular-src/req.nebular',"0");
+   header('location: ?p=dashboard');
+}
 
 // http responses
 function res($code,$msg,$data){
