@@ -428,10 +428,10 @@ if($page == 'login'): ?>
                                     <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#"><i class="ti-plus"></i> Add Database</a></li>
-                                <li><a href="#"><i class="ti-plus"></i> Add Object</a></li>
-                                <li><a href="#"><i class="ti-trash"></i> Drop Object</a></li>
-                                <li><a href="#"><i class="ti-trash"></i> Drop Database</a></li>
+                                <li><a onclick="dbAdd();"><i class="ti-plus"></i> Add Database</a></li>
+                                <li><a onclick="objAdd();"><i class="ti-plus"></i> Add Object</a></li>
+                                <li><a onclick="objDrop();"><i class="ti-trash"></i> Drop Object</a></li>
+                                <li><a onclick="dbDrop();"><i class="ti-trash"></i> Drop Database</a></li>
                                 <li><a onclick="logout();"><i class="ti-user"></i> Log out</a></li>
 
                               </ul>
