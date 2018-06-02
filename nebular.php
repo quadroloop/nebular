@@ -13,9 +13,6 @@ https://github.com/quadroloop/nebular
 
 session_start();
 
-$request_type = $_SERVER['REQUEST_METHOD'];
-$request = $request_type.'#'.$_SERVER['HTTP_REFERER'];
-file_put_contents('./nebular-src/req.nebular',$request);
 
 $user = $_SESSION['user'];
 $password = $_SESSION['password'];
@@ -31,7 +28,8 @@ $api_queries = array(
     "putObject,get",
     "getObject,get",
     "deleteObject,get",
-    "dropDB,get"
+    "dropDB,get",
+    "getStats,get"
     );
 
 
@@ -52,7 +50,11 @@ if(isset($_POST['uAuth'])){
 }
 
 // API-v0.1 Section, all DB processes go here..
-
+function reqCapture() {
+   $reqd = file_get_contents('./nebular-src/req.nebular');
+       $reqadd = (int)$reqd+1;
+       file_put_contents('./nebular-src/req.nebular',$reqadd);
+}
 // all request is GET request.
 if(isset($_GET['api'])){
    // check if auth is ok.
@@ -62,6 +64,7 @@ if(isset($_GET['api'])){
           //create a database
           case 'createDB' :
              if(isset($_GET['db_name'])){
+                   reqCapture();
                    $db = $_GET['db_name'];
                    $dir = './nebular-src/vm/'.$db;
                        if(!is_dir($dir)){
@@ -80,6 +83,7 @@ if(isset($_GET['api'])){
           // creating an object
           case 'setObject' :
               if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
+                 reqCapture();
                  $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                  file_put_contents($dir,$_GET['content']);
                  chmod($dir,0777);
@@ -93,6 +97,7 @@ if(isset($_GET['api'])){
            // append to object
           case 'putObject' :
               if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
+                 reqCapture();
                  $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                  file_put_contents($dir,$_GET['content'],FILE_APPEND);
                   chmod($dir,0777);
@@ -106,6 +111,7 @@ if(isset($_GET['api'])){
            // get object
           case 'getObject' :
               if(isset($_GET['db_name']) && isset($_GET['name'])){
+                 reqCapture();
                  $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                   $data = file_get_contents($dir);
                   echo res('200','OK',$data);
@@ -118,6 +124,7 @@ if(isset($_GET['api'])){
           // drop DB
            case 'dropDB' :
                if(isset($_GET['db_name'])){
+                  reqCapture();
                   if(is_dir('./nebular-src/vm/'.$_GET['db_name'])){
                   $dir = './nebular-src/vm/'.$_GET['db_name'];
                    $dbs = glob($dir.'/*');
@@ -139,6 +146,7 @@ if(isset($_GET['api'])){
            // Delete Object
             case 'deleteObject' :
               if(isset($_GET['db_name']) && isset($_GET['name'])){
+                 reqCapture();
                  $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
                    unlink($dir);
                   echo res('200','OK','Object Deleted.');
@@ -171,6 +179,7 @@ if(isset($_GET['api'])){
                 "db" => $db_count,
                 "objects" => $object_count/$db_count,
                 "queries" => $query_count,
+                "req" => (int)file_get_contents('./nebular-src/req.nebular')
                 );
               echo json_encode($stats);
               exit();
@@ -291,7 +300,8 @@ function qcolor($req){
     <link href="./nebular-src/css/demo.css" rel="stylesheet" />
     <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
-    <script type="text/javascript" src="./nebular-src/js/axios.min.js"></script>
+    <script type="text/javascript" src="./nebular.api.js"></script>
+    <script type="text/javascript" src="./nebular-src/js/nebular.ui.js"></script>
 
 
 </head>
@@ -394,11 +404,15 @@ function qcolor($req){
 
                               </ul>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="ti-settings"></i>
-                                <p>Settings</p>
-                            </a>
+                         <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-settings"></i>
+                                    <p>Settings</p>
+                                    <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#"><i class="ti-trash"></i> Delete Request Memory</a></li>
+                              </ul>
                         </li>
                     </ul>
 
@@ -697,7 +711,7 @@ function qcolor($req){
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Requests</p>
-                                            <span id="req"></span>
+                                            <span id="req">0</span>
                                         </div>
                                     </div>
                                 </div>
@@ -713,7 +727,7 @@ function qcolor($req){
                 </div>
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 w3-hide-small">
                         <div class="card w3-card-4">
                             <div class="header">
                                 <h4 class="title"><i class="ti-bolt"></i> Query Overview</h4>
@@ -721,7 +735,7 @@ function qcolor($req){
                             </div>
                             <div class="content">
                               <!-- data -->
-                                  <div class="w3-round w3-white w3-container w3-padding w3-small">
+                                  <div class="w3-round w3-white w3-container w3-padding">
                                     <div id="container" style="width: 100%;">
                                     <canvas id="canvas"></canvas>
                                     </div>
@@ -748,6 +762,15 @@ function qcolor($req){
                            document.getElementById('db').innerText = response.data['db'];
                            document.getElementById('obj').innerText = response.data['objects'];
                            document.getElementById('q').innerText = response.data['queries'];
+                           var req_count = document.getElementById('req');
+                           // document.getElementById('offset').innerHTML = response.data['req'];
+
+                              if(req_count.innerText != response.data['req']){
+                                 var delta = parseInt(req_count.innerText)+1;
+                                 req_count.innerHTML = delta; 
+                                 addData();
+                              }
+
                       })
                         .catch(function (error) {
                           console.log(error);
@@ -755,37 +778,25 @@ function qcolor($req){
 
              },200);
 
-            var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var MONTHS = ['GET','POST'];
     var color = Chart.helpers.color;
     var barChartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: ['POST','GET'],
       datasets: [{
-        label: 'Dataset 1',
+        label: 'API GET Requests',
         backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
         borderColor: window.chartColors.red,
         borderWidth: 1,
         data: [
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor()
+         
         ]
       }, {
-        label: 'Dataset 2',
+        label: 'API POST Requests',
         backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
         data: [
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor()
+          
         ]
       }]
 
@@ -1083,69 +1094,6 @@ function qcolor($req){
             menu.classList.add('active');
         }
 
-        function logout() {
-            swal({
-              timer: 1200,
-              title: 'Success',
-              text: 'You have logged out!',
-              type: 'success',
-              showConfirmButton: false
-            });
-            setTimeout("window.location = '?logout'",1200);
-        }
-
-        function del(file,type){
-           switch(type){
-            case '1' :
-               // delete object
-               swal({
-                   title: 'Are you sure?',
-                   text: "This action cannot be undone",
-                   type: 'warning',
-                   showCancelButton: true,
-                   confirmButtonColor: '#3085d6',
-                   cancelButtonColor: '#d33',
-                   confirmButtonText: 'Delete Object'
-                }).then((result) => {
-                  if (result.value) {
-                   swal({
-                    title: 'Deleted!',
-                    text: 'Object has been deleted.',
-                    type: 'success',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                   // delete Object api call ::TODO 
-                   setTimeout("location.reload()",1000);
-                }
-              })
-            break;
-            case '2' :
-               // delete database
-               swal({
-                   title: 'Are you sure?',
-                   text: "This action cannot be undone",
-                   type: 'warning',
-                   showCancelButton: true,
-                   confirmButtonColor: '#3085d6',
-                   cancelButtonColor: '#d33',
-                   confirmButtonText: 'Drop Database'
-                }).then((result) => {
-                  if (result.value) {
-                   swal({
-                    title: 'Deleted!',
-                    text: 'Database has been deleted.',
-                    type: 'success',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                   // delete DB api call ::TODO 
-                   setTimeout("window.location='?p=databases'",1000);
-                }
-              })
-            break;
-           }
-        }
 
         function search(){          
     // Declare variables
