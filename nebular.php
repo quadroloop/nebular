@@ -177,7 +177,7 @@ if(isset($_GET['api'])){
               //send reponse
               $stats = array(
                 "db" => $db_count,
-                "objects" => $object_count/$db_count,
+                "objects" => $object_count,
                 "queries" => $query_count,
                 "req" => (int)file_get_contents('./nebular-src/req.nebular')
                 );
@@ -301,8 +301,10 @@ function qcolor($req){
     <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
     <script type="text/javascript" src="./nebular.api.js"></script>
+    <script type="text/javascript">
+        var nb_DB='test_DB';
+    </script>
     <script type="text/javascript" src="./nebular-src/js/nebular.ui.js"></script>
-
 
 </head>
 <body>
@@ -431,7 +433,15 @@ function qcolor($req){
                    $db_focus = $_GET['db'];
                    $obj_edit = $_GET['edit'];
                   if(isset($db_focus)){
+                      if(!file_exists('./nebular-src/vm/'.$obj_edit)){
+                             echo '<p><i class="ti-check"></i> Object Deleted.</p>
+                                    <script>window.location = "nebular.php?p=databases"</script>
+                             ';
+                             exit();
+                           }
+                      echo '<script>nb_DB = "'.$db_focus.'";</script>';
                       if(isset($obj_edit)){
+                         echo '<script>nb_DB = "'.explode('/',$db_focus)[0].'";</script>';
                         // editing object
                         echo '
                           <div class="col-lg-4 col-md-5">

@@ -31,7 +31,8 @@
                     showConfirmButton: false,
                     timer: 1000
                   })
-                   // delete Object api call ::TODO 
+                   var ffile = file.split('/')[1];
+                   nb_delete(ffile);
                    setTimeout("location.reload()",1000);
                 }
               })
@@ -55,7 +56,8 @@
                     showConfirmButton: false,
                     timer: 1000
                   })
-                   // delete DB api call ::TODO 
+                     // alert(file);
+                    dropDB(file);
                    setTimeout("window.location='?p=databases'",1000);
                 }
               })

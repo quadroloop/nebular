@@ -33,7 +33,8 @@ function dropDB(db){
 }
 
 //create object
-function nb_set(db,name,data){
+function nb_set(name,data){
+	 var db = nb_DB;
 	axios.get('nebular.php?api=setObject&db_name='+db+'&name='+name+'&content='+data)
 	.then(function(res){
 		console.log(res.data);
@@ -43,7 +44,8 @@ function nb_set(db,name,data){
 }
 
 // append data to object
-function nb_put(db,name,data){
+function nb_put(name,data){
+	 var db = nb_DB;
 	axios.get('nebular.php?api=putObject&db_name='+db+'&name='+name+'&content='+data)
 	.then(function(res){
 		console.log(res.data);
@@ -81,7 +83,8 @@ function nb_select(name){
 
 
 // delete object
-function nb_delete(db,name){
+function nb_delete(name){
+	var db = nb_DB;
     axios.get('nebular.php?api=deleteObject&db_name='+db+'&name='+name)
 	.then(function(res){
 		console.log(res.data);
