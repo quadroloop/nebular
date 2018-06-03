@@ -170,3 +170,49 @@
      })
 
        }
+
+
+ function addKey() {
+  var key = document.getElementById('key').value;
+  if(key){
+    axios.get('./nebular-src/nebular.auth.php?save_key='+key)
+      .then(function(res){
+     swal({
+      type: 'success',
+      title: 'Success!',
+      text: '"'+key+'" is registered as a API key',
+      showConfirmButton: false,
+      timer: 1000
+     })
+     setTimeout('location.reload()',1000);
+   });
+     
+  }else{
+    swal('Sorry','Please provide a key first','info');
+  }
+ }      
+
+ function manage_key(data) {
+    swal({
+  title: 'Delete API Key?',
+  text: data,
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.value) {
+   axios.get('./nebular-src/nebular.auth.php?delete_key='+data).then(function(res){
+    swal( {
+        type: 'success',
+        title: "Success",
+        text: "API key successfully Deleted",
+        timer: 1000,
+        showConfirmButton: false
+      })
+       setTimeout('location.reload()',1000);
+    })
+  }
+})
+ }

@@ -33,6 +33,8 @@ $api_queries = array(
     );
 
 
+
+
 if(isset($_POST['uAuth'])){
     $usr1 = $_POST['usr1'];
     $usr2 = $_POST['usr2'];
@@ -190,7 +192,7 @@ if(isset($_GET['api'])){
                   foreach ($dba as $dbc) {
                       if(is_dir($dbc)){
                       $db_count++;
-                      $d2 = './nebular-src/vm/db_pamo/*';
+                      $d2 = './nebular-src/vm/*';
                           $obj = glob($d2);
                              foreach ($obj as $obji) {
                                  $object_count++;
@@ -330,7 +332,7 @@ function qcolor($req){
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
     <script type="text/javascript" src="./nebular.api.js"></script>
     <script type="text/javascript">
-        var nb_DB='test_DB';
+        //var nb_DB='test_DB';
     </script>
     <script type="text/javascript" src="./nebular-src/js/nebular.ui.js"></script>
 
@@ -695,12 +697,12 @@ if($page == 'login'): ?>
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-success text-center">
-                                            <i class="ti-wallet"></i>
+                                            <i class="ti-layout-accordion-list"></i>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Objects</p>
+                                            <p>Segments</p>
                                             <span id="obj"></span>
                                         </div>
                                     </div>
@@ -817,13 +819,13 @@ if($page == 'login'): ?>
                       });
 
              },200);
-
-            var MONTHS = ['GET','POST'];
+           var n=0;
+            var MONTHS = ['Bt:1','Bt:2','Bt:3','Bt:4','Bt:5','Bt:6','Bt:7','Bt:8','Bt:9','Bt:10'];
     var color = Chart.helpers.color;
     var barChartData = {
-      labels: ['POST','GET'],
+      labels: ['Bt:1'],
       datasets: [{
-        label: 'API GET Requests',
+        label: 'Bt: GET',
         backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
         borderColor: window.chartColors.red,
         borderWidth: 1,
@@ -831,7 +833,7 @@ if($page == 'login'): ?>
          
         ]
       }, {
-        label: 'API POST Requests',
+        label: 'Bt: POST',
         backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
@@ -854,43 +856,17 @@ if($page == 'login'): ?>
           },
           title: {
             display: true,
-            text: 'Recent 100 Requests'
+            text: 'API requests'
           }
         }
       });
 
     };
 
-    document.getElementById('randomizeData').addEventListener('click', function() {
-      var zero = Math.random() < 0.2 ? true : false;
-      barChartData.datasets.forEach(function(dataset) {
-        dataset.data = dataset.data.map(function() {
-          return zero ? 0.0 : randomScalingFactor();
-        });
-
-      });
-      window.myBar.update();
-    });
+   
 
     var colorNames = Object.keys(window.chartColors);
-    document.getElementById('addDataset').addEventListener('click', function() {
-      var colorName = colorNames[barChartData.datasets.length % colorNames.length];
-      var dsColor = window.chartColors[colorName];
-      var newDataset = {
-        label: 'Dataset ' + barChartData.datasets.length,
-        backgroundColor: color(dsColor).alpha(0.5).rgbString(),
-        borderColor: dsColor,
-        borderWidth: 1,
-        data: []
-      };
-
-      for (var index = 0; index < barChartData.labels.length; ++index) {
-        newDataset.data.push(randomScalingFactor());
-      }
-
-      barChartData.datasets.push(newDataset);
-      window.myBar.update();
-    });
+    
 
     function addData() {
       if (barChartData.datasets.length > 0) {
@@ -898,28 +874,14 @@ if($page == 'login'): ?>
         barChartData.labels.push(month);
 
         for (var index = 0; index < barChartData.datasets.length; ++index) {
-          // window.myBar.addData(randomScalingFactor(), index);
           barChartData.datasets[index].data.push(randomScalingFactor());
         }
-
         window.myBar.update();
       }
+
     }
 
-    document.getElementById('removeDataset').addEventListener('click', function() {
-      barChartData.datasets.splice(0, 1);
-      window.myBar.update();
-    });
-
-    document.getElementById('removeData').addEventListener('click', function() {
-      barChartData.labels.splice(-1, 1); // remove the label first
-
-      barChartData.datasets.forEach(function(dataset) {
-        dataset.data.pop();
-      });
-
-      window.myBar.update();
-    });
+   
         </script>     
        <?php endif; ?>
 
@@ -1045,21 +1007,20 @@ if($page == 'login'): ?>
                     <div class="col-lg-8 col-md-7">
                         <div class="card w3-card-4">
                             <div class="header">
-                                <h4 class="title"><i class="ti-bolt"></i> Nebular API Overview</h4>
+                                <h4 class="title"><i class="ti-bolt"></i>Nebular API Key</h4>
                             </div>
                             <div class="content">
                                    <!-- queries -->
                                       <ul class="w3-ul w3-border w3-round">
                                           <?php
-                                          foreach ($api_queries as $q) {
+                                          foreach ($api_keys as $q) {
                                                $query = explode(',', $q);
                                                echo '
-                                               <li class="w3-bar">
-      <span onclick="" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+                                               <li class="w3-bar" title="'.$query[1].'" onclick="manage_key(this.title)">
       <img src="./nebular-src/img/query.gif" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
       <div class="w3-bar-item">
-        <span class="w3-large"><i class="ti-bolt w3-text-blue"></i> '.$query[0].'</span><br>
-        <span class="'.qcolor($query[1]).'"><i class="ti-control-record "></i> '.strtoupper($query[1]).'</span>
+        <span class="w3-large"><i class="ti-bolt w3-text-blue"></i> '.substr($query[0],0,8).'</span><br>
+        <span class="'.qcolor($query[1]).' w3-small w3-text-grey"><i class="ti-panel"></i> '.strtoupper($query[1]).'</span>
       </div>
     </li>
                                                ';
@@ -1068,21 +1029,22 @@ if($page == 'login'): ?>
                                       </ul>
                                       <br>
                                       <br>
+                                     
                                    <!-- end of queries -->
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="w3-btn w3-round w3-black">Register API Key</label>
+                                                <label><i class="ti-bolt"></i> Register API Key</label>
                                                 <br>
                                                 <br>
-                                                <input type="text" class="form-control border-input" placeholder="API Key" value="<?php echo sha1('what'); ?>">
+                                                <input type="text" id=key class="form-control border-input" placeholder="New API Key">
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="text-center">
-                                       <!--  <button type="button" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Update Credentials</button> -->
+                                        <button type="button" onclick="addKey();" class="btn btn-info btn-fill btn-wd"><i class="ti-bolt"></i> Register API Key</button>
                                     </div>
                                     <div class="clearfix"></div>
                             </div>
