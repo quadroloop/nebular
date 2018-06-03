@@ -1,1 +1,4 @@
-./git-watch.bat
+# ignore git-watch.bat and other batchfiles
+*.bat
+
+# end of nebular git ignore
