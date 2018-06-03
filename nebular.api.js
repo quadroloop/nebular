@@ -26,7 +26,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 // nebular  javascript API
 // Bryce Mercines 2018
 
-
 // create database
 function createDB(db){
 	axios.get('nebular.php?api=createDB&db_name='+db)
