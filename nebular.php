@@ -545,7 +545,7 @@ if($page == 'login'): ?>
                        <div class="w3-dropdown-hover w3-right">
                          <button class="w3-button w3-hover-indigo"><i class="ti-settings"></i> Menu</button>
                            <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-black" style="z-index:1000;">
-                           <a onclick="addObject(&apos;'.$db_focus.'&apos;)" class="w3-bar-item w3-button w3-hover-indigo"><i class="ti-plus"></i> Add Object</a>
+                           <a onclick="objAdd();" class="w3-bar-item w3-button w3-hover-indigo"><i class="ti-plus"></i> Add Object</a>
                            <a onclick="del(&apos;'.$db_focus.'&apos;,&apos;2&apos;)" class="w3-bar-item w3-button  w3-hover-red"><i class="ti-trash"></i> Drop DB</a>
                        </div>
                       </div>
@@ -646,7 +646,7 @@ if($page == 'login'): ?>
                     echo '
                     <div class="w3-margin">
                        <h4><i class="ti-server"></i> No Databases</h4>
-                       <span>click here to <a class="w3-btn w3-border w3-round"><i class="ti-plus"></i> Add Database</a></span>
+                       <span>click here to <a class="w3-btn w3-border w3-round" onclick="dbAdd();"><i class="ti-plus"></i> Add Database</a></span>
                     </div>
                     ';
                  } 
@@ -996,7 +996,7 @@ if($page == 'login'): ?>
                             <div class="text-center">
                                 <div class="row">
                                     <div class="w3-margin">
-                                        <a class="btn btn-warning"><i class='ti-download'></i> Download JS file</a>
+                                        <a href="nebular.api.js" download="nebular.api.js" class="btn btn-warning"><i class='ti-download'></i> Download JS file</a>
                                     </div>
                                 </div>
                             </div>
