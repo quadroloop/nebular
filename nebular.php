@@ -419,7 +419,7 @@ if($page == 'login'): ?>
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" style="text-transform:capitalize;" href="#"><?php echo $page; ?></a>
+                    <a id="nav-head" class="navbar-brand" style="text-transform:capitalize;" href="#"><?php echo $page; ?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

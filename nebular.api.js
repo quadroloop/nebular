@@ -115,7 +115,6 @@ function nb_auth(api_key){
 
 
 // static function for directly parsing object data
-
 function nb_parse(element,objectname){
 	var db = nb_DB;
    $(element).load('./nebular-src/vm/'+db+'/'+objectname);
