@@ -115,6 +115,7 @@ function nb_auth(api_key){
 
 
 // static function for directly parsing object data
+// element is prefixed with a hash if element is identified by id!
 function nb_parse(element,objectname){
 	var db = nb_DB;
    $(element).load('./nebular-src/vm/'+db+'/'+objectname);
