@@ -16,23 +16,23 @@
     git clone https://github.com/quadroloop/nebular
   ```
   __or__ get the files manually.
-  1.) __nebular.php__ - API and Web UI
-  2.) __nebular-src__ -  (Folder) nebular depedencies
-  3.) __nebular.api.js__ - Javascript API helper file
-  4.) __[your web app file]__ - your index.php,index.html..etc that is going to access data from nebular API
-  5.) __Running Nebular__ -- All you need is a PHP server environment to run nebular and the files listed above. (1-4), you can use Apache2, XAMPP, __or__ just use PHP 7+ and the command:
+  > 1.) __nebular.php__ - API and Web UI
+  > 2.) __nebular-src__ -  (Folder) nebular depedencies
+  > 3.) __nebular.api.js__ - Javascript API helper file
+  > 4.) __[your web app file]__ - your index.php,index.html..etc that is going to access data from nebular API
+  > 5.) __Running Nebular__ -- All you need is a PHP server environment to run nebular and the files listed above. > (1-4), you can use Apache2, XAMPP, __or__ just use PHP 7+ and the command:
   ```sh
      php -S 127.0.0.1:80
   ```
   > __then__ open your browser and goto to http://127.0.0.1/__[your_path]__/nebular.php
   
-  >> __Using the Web User Interface__
+  > __Using the Web User Interface__
   > __Default login:__
   > __username:__ root
   > __password:__ admin
   > from here you can play around with the dashboard UI, its pretty simple and intuitive. although some what buggy on it's early stage.
 
-  >> __Include JS API file in your webapp and setting up DB connection__
+  > __Include JS API file in your webapp and setting up DB connection__
    ```html
      <script src="./nebular.api.js"></script>
      <script>
@@ -56,6 +56,7 @@
      alert(res.data);
    });
   ```
+  
   
  
   
