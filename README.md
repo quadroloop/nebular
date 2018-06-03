@@ -6,7 +6,7 @@
 > __nebular__ is a simple experimental Database/Web Storage Application written in Javascript and PHP
 
 #### About the Project
-     the goal of the project is to build a simple Web-base Database application that has the properties of webstorage. the object has a default property of a string and can be manipulated by Javascript. It's built mainly to support small scale Web-applications and rapid prototyping, as it only requires a PHP environment to run. 
+>the goal of the project is to build a simple Web-base Database application that has the properties of webstorage. the object has a default property of a string and can be manipulated by Javascript. It's built mainly to support small scale Web-applications and rapid prototyping, as it only requires a PHP environment to run. 
 
 ## Usage:
 > __Setting up nebular__
