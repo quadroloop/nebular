@@ -28,12 +28,12 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 
 // // create database
 // function createDB(db){
-// 	axios.get('nebular.php?api=createDB&db_name='+db)
-// 	.then(function(res){
-// 		console.log(res.data);
-// 	}).catch(function(err){
-// 		console.log(err);
-// 	});
+	axios.get('nebular.php?api=createDB&db_name='+db)
+	.then(function(res){
+		console.log(res.data);
+	}).catch(function(err){
+		console.log(err);
+	});
 // }
 
 // // drop database
