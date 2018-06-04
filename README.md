@@ -55,6 +55,7 @@
    nb_select('newObject').then((res)=> {
      alert(res.data);
    });
+   
   ```
 
   
