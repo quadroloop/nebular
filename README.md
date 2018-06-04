@@ -56,7 +56,9 @@
      alert(res.data);
    });
 
-   // nb_parse(element,objectname) - identify and element via it's class or id, the call a nebular object
+   // nb_parse(element,objectname) - identify and element via it's class or id, the call a nebular object to parse the content to the selected element.
+
+   nb_parse('#div','newObject');
   ```
 
   
