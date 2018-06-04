@@ -55,7 +55,8 @@
    nb_select('newObject').then((res)=> {
      alert(res.data);
    });
-   
+
+   // nb_parse(element,objectname) - identify and element via it's class or id, the call a nebular object
   ```
 
   
