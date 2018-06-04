@@ -62,8 +62,6 @@
   ```
 
   
- 
-  
 
 #### Project Status
   > Current Version : __Version 0.1__
