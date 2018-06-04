@@ -26,25 +26,25 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 // nebular  javascript API
 // Bryce Mercines 2018
 
-// create database
-function createDB(db){
-	axios.get('nebular.php?api=createDB&db_name='+db)
-	.then(function(res){
-		console.log(res.data);
-	}).catch(function(err){
-		console.log(err);
-	});
-}
+// // create database
+// function createDB(db){
+// 	axios.get('nebular.php?api=createDB&db_name='+db)
+// 	.then(function(res){
+// 		console.log(res.data);
+// 	}).catch(function(err){
+// 		console.log(err);
+// 	});
+// }
 
-// drop database
-function dropDB(db){
-	axios.get('nebular.php?api=dropDB&db_name='+db)
-	.then(function(res){
-		console.log(res.data);
-	}).catch(function(err){
-		console.log(err);
-	});
-}
+// // drop database
+// function dropDB(db){
+// 	axios.get('nebular.php?api=dropDB&db_name='+db)
+// 	.then(function(res){
+// 		console.log(res.data);
+// 	}).catch(function(err){
+// 		console.log(err);
+// 	});
+// }
 
 //create object
 function nb_set(name,data){
