@@ -61,8 +61,6 @@
    nb_parse('#div','newObject');
   ```
 
-  
-
 #### Project Status
   > Current Version : __Version 0.1__
   > Built-in UI Dashboard
