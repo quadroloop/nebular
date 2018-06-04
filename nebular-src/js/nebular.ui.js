@@ -56,8 +56,13 @@
                     showConfirmButton: false,
                     timer: 1000
                   })
-                     // alert(file);
-                    dropDB(file);
+                     
+                     axios.get('nebular.php?api=dropDB&db_name='+file)
+                 .then(function(res){
+               console.log(res.data);
+             }).catch(function(err){
+              console.log(err);
+            });
                    setTimeout("window.location='?p=databases'",1000);
                 }
               })
