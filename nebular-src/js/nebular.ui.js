@@ -139,7 +139,7 @@
                    if(document.getElementById('db_name').value && document.getElementById('obj').value && document.getElementById('content').value ){
     
                       
-                      axios.post('nebular.php',jquery.param({
+                      axios.post('nebular.php',$.param({
                          api: 'setObject',
                          db_name: document.getElementById('db_name').value,
                          name: document.getElementById('obj').value,
@@ -172,15 +172,18 @@
 
    function subnet() {
      var objectname = document.getElementById('ed0').value;
-     var api = document.getElementById('ed1').value;
-     var dbname = document.getElementById('ed2').value;
+     var dbname = document.getElementById('ed1').value;
      var content = document.getElementById('ed3').value;
 
-     axios.get('nebular.php?api='+api+"&name="+objectname+"&db_name="+dbname+"&content="+content)
-     .then(function(res) {
-         location.reload();
-     })
-
+     axios.post('nebular.php',$.param({
+        api: 'setObject',
+        db_name: dbname,
+        name: objectname,
+        content: content
+     })).then((res)=>{
+      console.log(res.data.data);
+      location.reload();
+     });
        }
 
 
