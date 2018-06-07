@@ -74,12 +74,16 @@ if(isset($_POST['uAuth'])){
 
 }
 
-// API-v0.1 Section, all DB processes go here..
+// API-v0.2 Section, all DB processes go here..
 function reqCapture() {
    $reqd = file_get_contents('./nebular-src/req.nebular');
        $reqadd = (int)$reqd+1;
        file_put_contents('./nebular-src/req.nebular',$reqadd);
 }
+
+//HTTP POST portions of the API
+
+
 // all request is GET request.
 if(isset($_GET['api'])){
    // check if auth is ok.
@@ -104,47 +108,6 @@ if(isset($_GET['api'])){
                 echo res('400','Bad Request','Incompete Parameters');
                 exit();
              }
-          break;
-          // creating an object
-          case 'setObject' :
-              if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
-                 reqCapture();
-                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
-                 file_put_contents($dir,$_GET['content']);
-                 chmod($dir,0777);
-                  echo res('200','OK','Object created successfully');
-                 exit(); 
-              }else{
-                 echo res('400','Bad Request','Incompete Parameters');
-                 exit();
-              }   
-          break;
-           // append to object
-          case 'putObject' :
-              if(isset($_GET['db_name']) || isset($_GET['name']) || isset($_GET['content'])){
-                 reqCapture();
-                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
-                 file_put_contents($dir,$_GET['content'],FILE_APPEND);
-                  chmod($dir,0777);
-                  echo res('200','OK','Data added to object successfully');
-                 exit(); 
-              }else{
-                 echo res('400','Bad Request','Incompete Parameters');
-                 exit();
-              }   
-          break;
-           // get object
-          case 'getObject' :
-              if(isset($_GET['db_name']) && isset($_GET['name'])){
-                 reqCapture();
-                 $dir = "./nebular-src/vm/".$_GET['db_name'].'/'.$_GET['name'];
-                  $data = file_get_contents($dir);
-                  echo res('200','OK',$data);
-                 exit(); 
-              }else{
-                 echo res('400','Bad Request','Incompete Parameters');
-                 exit();
-              }   
           break;
           // drop DB
            case 'dropDB' :
