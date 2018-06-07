@@ -343,7 +343,6 @@ function qcolor($req){
     <link href="./nebular-src/css/themify-icons.css" rel="stylesheet">
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
     <script type="text/javascript" src="./nebular.api.js"></script>
-    <script type="text/javascript" src="./nebular-src/js/nebular.ui.js"></script>
 
 </head>
 <body>

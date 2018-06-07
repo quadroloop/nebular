@@ -139,7 +139,7 @@
                    if(document.getElementById('db_name').value && document.getElementById('obj').value && document.getElementById('content').value ){
     
                       
-                      axios.post('nebular.php',JQuery.param({
+                      axios.post('nebular.php',jquery.param({
                          api: 'setObject',
                          db_name: document.getElementById('db_name').value,
                          name: document.getElementById('obj').value,
