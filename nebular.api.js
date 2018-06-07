@@ -116,8 +116,15 @@ function nb_delete(name){
 function nb_auth(api_key){
 	axios.get('./nebular-src/nebular.auth.php?chk_key='+api_key)
 	  .then((res)=>{
-
+         console.log('Nebular: API is Active');
 	  })
+}
+
+// disconnect auth
+
+function nb_end() {
+	axios.get('nebular.php?logout');
+	console.log('Nebular: API Auth Disconnected');
 }
 
 

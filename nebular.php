@@ -20,6 +20,7 @@ $page = $_GET['p'];
 
 
 
+
 //registered api queries
 // register api routes
 $api_queries = array(
@@ -291,13 +292,16 @@ checkAuthUI($page,$user,$password);
 
 function checkAuthUI($req,$usr,$pass){     
     if(!isset($usr) || !isset($pass)){
-
-        if($usr=='delta' && $psw == 'APIv0'){
-          header("Location: ?p=login");
-        }
+        
         if($req != 'login'){
               header("Location: ?p=login");
               }       
+    }else{
+      //API restrictions
+if($usr == 'delta' && $pass == 'APIv0'){
+  echo "Nebular DB: Status Running. Access Level: API";
+  exit();
+}
     }
 }
 
