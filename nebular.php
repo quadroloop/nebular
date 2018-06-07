@@ -86,7 +86,47 @@ if(isset($_POST['api'])){
       if(isset($user) && isset($password)){
          $mquery = $_POST['api'];
              switch ($mquery) {
-               
+                  // creating an object
+          case 'setObject' :
+              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
+                 reqCapture();
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                 file_put_contents($dir,$_POST['content']);
+                 chmod($dir,0777);
+                  echo res('200','OK','Object created successfully');
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
+           // append to object
+          case 'putObject' :
+              if(isset($_POST['db_name']) || isset($_POST['name']) || isset($_POST['content'])){
+                 reqCapture();
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                 file_put_contents($dir,$_POST['content'],FILE_APPEND);
+                  chmod($dir,0777);
+                  echo res('200','OK','Data added to object successfully');
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
+           // get object
+          case 'getObject' :
+              if(isset($_POST['db_name']) && isset($_POST['name'])){
+                 reqCapture();
+                 $dir = "./nebular-src/vm/".$_POST['db_name'].'/'.$_POST['name'];
+                  $data = file_get_contents($dir);
+                  echo res('200','OK',$data);
+                 exit(); 
+              }else{
+                 echo res('400','Bad Request','Incompete Parameters');
+                 exit();
+              }   
+          break;
              }
       }else{
          echo res('500','Error','Bad Request Auth. failed.');
