@@ -86,8 +86,7 @@ if(isset($_POST['api'])){
       if(isset($user) && isset($password)){
          $mquery = $_POST['api'];
              switch ($mquery) {
-               case 'value':
-                
+               
              }
       }else{
          echo res('500','Error','Bad Request Auth. failed.');
