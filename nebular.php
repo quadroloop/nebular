@@ -84,6 +84,16 @@ function reqCapture() {
 //HTTP POST portions of the API
 if(isset($_POST['api'])){
       if(isset($user) && isset($password)){
+         $mquery = $_POST['api'];
+             switch ($mquery) {
+               case 'value':
+                 # code...
+                 break;
+               
+               default:
+                 # code...
+                 break;
+             }
       }else{
          echo res('500','Error','Bad Request Auth. failed.');
         exit();
