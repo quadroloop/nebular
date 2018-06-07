@@ -292,7 +292,7 @@ checkAuthUI($page,$user,$password);
 function checkAuthUI($req,$usr,$pass){     
     if(!isset($usr) || !isset($pass)){
 
-        if($usr=='delta'){
+        if($usr=='delta' && $psw == 'APIv0'){
           header("Location: ?p=login");
         }
         if($req != 'login'){

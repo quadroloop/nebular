@@ -17,7 +17,7 @@ if(isset($_GET['chk_key'])){
    	   exit();
    	}else{
    		 $_SESSION['user'] = "delta";
-   	    $_SESSION['password'] = "API";
+   	    $_SESSION['password'] = "APIv1";
    	}
 }
 
