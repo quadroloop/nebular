@@ -16,8 +16,8 @@ if(isset($_GET['chk_key'])){
    	    echo json_encode($resdata);
    	   exit();
    	}else{
-   		 $_SESSION['user'] = "root";
-   	    $_SESSION['password'] = "admin";
+   		 $_SESSION['user'] = "delta";
+   	    $_SESSION['password'] = "API";
    	}
 }
 
