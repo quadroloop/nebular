@@ -137,7 +137,14 @@
 }).then((result) => {
                   if (result.value) {
                    if(document.getElementById('db_name').value && document.getElementById('obj').value && document.getElementById('content').value ){
-                      axios.get('nebular.php?api=setObject&db_name='+document.getElementById('db_name').value+'&name='+document.getElementById('obj').value+"&content="+document.getElementById('content').value)
+    
+                      
+                      axios.post('nebular.php',JQuery.param({
+                         api: 'setObject',
+                         db_name: document.getElementById('db_name').value,
+                         name: document.getElementById('obj').value,
+                         content: document.getElementById('content').value
+                      }))
                       .then(function(res){
                       swal({
                         title: 'Success!',

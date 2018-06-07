@@ -30,23 +30,35 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 //create object
 function nb_set(name,data){
 	 var db = nb_DB;
-	axios.get('nebular.php?api=setObject&db_name='+db+'&name='+name+'&content='+data)
-	.then(function(res){
-		console.log(res.data);
-	}).catch(function(err){
-		console.log(err);
-	});
+	axios.post('nebular.php', JQuery.param({
+	    api: 'setObject',
+	    db_name: db,
+	    name: name,
+	    content: content
+  }))
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 
 // append data to object
 function nb_put(name,data){
 	 var db = nb_DB;
-	axios.get('nebular.php?api=putObject&db_name='+db+'&name='+name+'&content='+data)
-	.then(function(res){
-		console.log(res.data);
-	}).catch(function(err){
-		console.log(err);
-	});
+	axios.post('nebular.php', JQuery.param({
+	    api: 'putObject',
+	    db_name: db,
+	    name: name,
+	    content: content
+  }))
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 
 
@@ -57,12 +69,17 @@ var resp;
 function nb_get(name){
      if(nb_DB){
        var db = nb_DB;
-	axios.get('nebular.php?api=getObject&db_name='+db+'&name='+name)
-	.then(function(res){
-	   resp = res.data.data;
-	}).catch(function(err){
-		console.log(err);
-	});
+	axios.post('nebular.php', JQuery.param({
+	    api: 'getObject',
+	    db_name: db,
+	    name: name,
+  }))
+  .then(function (response) {
+    resp = response.data 
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 	
      }else{
      	console.log('Nebular: Error! no DB is selected use var nb_DB="db_name" to select a database.');
