@@ -82,7 +82,13 @@ function reqCapture() {
 }
 
 //HTTP POST portions of the API
-
+if(isset($_POST['api'])){
+      if(isset($user) && isset($password)){
+      }else{
+         echo res('500','Error','Bad Request Auth. failed.');
+        exit();
+      }
+}
 
 // all request is GET request.
 if(isset($_GET['api'])){
