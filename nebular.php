@@ -871,7 +871,6 @@ if($page == 'login'): ?>
     };
 
    
-
     var colorNames = Object.keys(window.chartColors);
     
 
