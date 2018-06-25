@@ -20,7 +20,6 @@ $password = $_SESSION['password'];
 $page = $_GET['p'];
 
 
-
 // register api routes
 $api_queries = array(
     "createdDB,get",
