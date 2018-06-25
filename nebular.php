@@ -1029,8 +1029,7 @@ if($page == 'login'): ?>
                                           ?>
                                       </ul>
                                       <br>
-                                      <br>
-                                     
+                                      <br>                           
                                    <!-- end of queries -->
                                     <div class="row">
                                         <div class="col-md-12">
@@ -1057,8 +1056,6 @@ if($page == 'login'): ?>
             </div>
         </div>
        <?php endif; ?>
-
-
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
