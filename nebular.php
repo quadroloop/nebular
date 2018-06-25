@@ -12,6 +12,7 @@ https://github.com/quadroloop/nebular
 */
 
 session_start();
+header("Access-Control-Allow-Origin: *");
 require('./nebular-src/nebular.auth.php');
 
 $user = $_SESSION['user'];
