@@ -462,7 +462,6 @@ if($page == 'login'): ?>
                 </div>
             </div>
         </nav>
-
      <?php 
        // Databases page
        if($page == 'databases'):
@@ -872,7 +871,6 @@ if($page == 'login'): ?>
 
     };
 
-   
     var colorNames = Object.keys(window.chartColors);
     
 
@@ -970,13 +968,11 @@ if($page == 'login'): ?>
                         </div>
                     </div>
 
-
                 </div>
             </div>
         </div>
 
        <?php endif; ?>
-
        <?php
          // api page
          if($page == 'api'):
