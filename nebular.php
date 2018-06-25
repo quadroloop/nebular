@@ -967,7 +967,6 @@ if($page == 'login'): ?>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1006,7 +1005,6 @@ if($page == 'login'): ?>
                             </div>
                         </div>
                         
-             
                     </div>
                     <div class="col-lg-8 col-md-7">
                         <div class="card w3-card-4">
