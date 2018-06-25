@@ -1097,7 +1097,6 @@ if($page == 'login'): ?>
             menu.classList.add('active');
         }
 
-
         function search(){          
     // Declare variables
     var input, filter, ul, li, a, i;
