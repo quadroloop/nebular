@@ -1077,21 +1077,12 @@ if($page == 'login'): ?>
     </div>
 </div>
 </body>
-
     <!--   Core JS Files   -->
     <script src="./nebular-src/js/jquery-1.10.2.js" type="text/javascript"></script>
-
     <script src="./nebular-src/js/bootstrap.min.js" type="text/javascript"></script>
-
-   
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
     <script src="./nebular-src/js/paper-dashboard.js"></script>
-
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="./nebular-src/js/demo.js"></script>
-
     <script type="text/javascript">
-      
         function nav(menu){
             document.getElementsByClassName('active')[0].classList.remove('active'); 
             menu.classList.add('active');
