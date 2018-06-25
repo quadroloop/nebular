@@ -21,8 +21,6 @@ $page = $_GET['p'];
 
 
 
-
-//registered api queries
 // register api routes
 $api_queries = array(
     "createdDB,get",

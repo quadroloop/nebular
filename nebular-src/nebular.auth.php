@@ -1,5 +1,6 @@
 <?php
 session_start();
+header("Access-Control-Allow-Origin: *");
 $api_keys = array(
      "a56e97f5adba76b8f33329acec261f2be04e6267,X2X-VCX-KV11",//-->apikey
     );
