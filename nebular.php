@@ -259,7 +259,6 @@ if(isset($loguser)){
 }
 
 
-
 //log out
 if(isset($_GET['logout'])){
     session_destroy();
