@@ -11,7 +11,6 @@ this project is opensource under MIT license, view it on github at:
 https://github.com/quadroloop/nebular
 */
 
-session_start();
 header("Access-Control-Allow-Origin: *");
 require('./nebular-src/nebular.auth.php');
 
@@ -243,8 +242,8 @@ if(isset($_GET['api'])){
 // end of API
 
 //login 
-$loguser = $_POST['username'];
-$logpassword = $_POST['password'];
+$loguser = @$_POST['username'];
+$logpassword = @$_POST['password'];
 if(isset($loguser)){
    if (password_verify($loguser, $s1) && password_verify($logpassword, $s2)){
       $_SESSION['user'] = $loguser;
@@ -470,7 +469,7 @@ if($page == 'login'): ?>
             <div class="container-fluid">
                 <div class="row">
                    <?php
-                   $db_focus = $_GET['db'];
+                   @$db_focus = $_GET['db'];
                    $obj_edit = $_GET['edit'];
                   if(isset($db_focus)){
                       if(!file_exists('./nebular-src/vm/'.$obj_edit)){
