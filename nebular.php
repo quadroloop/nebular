@@ -14,9 +14,9 @@ https://github.com/quadroloop/nebular
 header("Access-Control-Allow-Origin: *");
 require('./nebular-src/nebular.auth.php');
 
-$user = $_SESSION['user'];
-$password = $_SESSION['password'];
-$page = $_GET['p'];
+@$user = $_SESSION['user'];
+@$password = $_SESSION['password'];
+@$page = $_GET['p'];
 
 
 // register api routes
@@ -470,7 +470,7 @@ if($page == 'login'): ?>
                 <div class="row">
                    <?php
                    @$db_focus = $_GET['db'];
-                   $obj_edit = $_GET['edit'];
+                   @$obj_edit = $_GET['edit'];
                   if(isset($db_focus)){
                       if(!file_exists('./nebular-src/vm/'.$obj_edit)){
                              echo '<p><i class="ti-check"></i> Object Deleted.</p>
