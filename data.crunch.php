@@ -121,12 +121,6 @@ function nb_auth(api_key){
 	  })
 }
 
-// disconnect auth
-
-function nb_end() {
-	axios.get('nebular.php?logout');
-	console.log('Nebular: API Auth Disconnected');
-}
 
 
 // static function for directly parsing object data
