@@ -76,7 +76,7 @@ function nb_get(name){
 	    db_name: db,
 	    name: name,
   }))
- 
+ // compiling
   .catch(function (error) {
     console.log(error);
   });
