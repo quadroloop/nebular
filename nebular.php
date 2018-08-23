@@ -1098,7 +1098,6 @@ if($page == 'login'): ?>
     }
         }
     </script>
-
     <?php echo '
       <script>
          document.getElementById("'.$page.'").classList.add("active");
