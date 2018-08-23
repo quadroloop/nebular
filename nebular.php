@@ -282,8 +282,6 @@ function res($code,$msg,$data){
 
 // init
 checkAuthUI($page,$user,$password);
-
-
 function checkAuthUI($req,$usr,$pass){     
     if(!isset($usr) || !isset($pass)){
         
