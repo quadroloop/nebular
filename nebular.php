@@ -370,7 +370,6 @@ if($page == 'login'): ?>
         window.onload = function() {
             var x = document.getElementsByTagName('input')[0].focus();
         }
-
     </script>
   </body>
   </html>       
