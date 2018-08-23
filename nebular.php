@@ -966,7 +966,6 @@ if($page == 'login'): ?>
                 </div>
             </div>
         </div>
-
        <?php endif; ?>
        <?php
          // api page
