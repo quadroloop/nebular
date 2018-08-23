@@ -1053,7 +1053,6 @@ if($page == 'login'): ?>
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
-
                         <li>
                             <a href="https://github.com/quadroloop/nebular">
                                 Nebular v. 0.1 | Quadroloop
