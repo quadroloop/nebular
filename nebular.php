@@ -343,10 +343,8 @@ function qcolor($req){
     <script type="text/javascript" src="./nebular-src/js/sweet-alert2.js"></script>
     <script type="text/javascript" src="./nebular.api.js"></script>
     <script type="text/javascript" src="./nebular-src/js/nebular.ui.js"></script>
-
 </head>
 <body>
-
 <?php
 if($page == 'login'): ?>
     <div id="login">
