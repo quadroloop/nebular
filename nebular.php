@@ -662,8 +662,6 @@ if($page == 'login'): ?>
              </div>  
             </div>      
    <?php endif; ?>
-    
-
    <?php
      // Dashboard Page
     if($page == 'dashboard'):
