@@ -299,8 +299,6 @@ if($usr == 'delta' && $pass == 'APIv0'){
     }
 }
 
-
-
 //remove directory slashes
 function ndir($var) {
   return str_replace('./nebular-src/vm/', '', $var);
