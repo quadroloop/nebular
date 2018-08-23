@@ -882,8 +882,6 @@ if($page == 'login'): ?>
       }
 
     }
-
-   
         </script>     
        <?php endif; ?>
 
