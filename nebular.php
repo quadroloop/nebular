@@ -279,7 +279,6 @@ function res($code,$msg,$data){
         );
     return json_encode($resdata);
 }
-
 // init
 checkAuthUI($page,$user,$password);
 function checkAuthUI($req,$usr,$pass){     
