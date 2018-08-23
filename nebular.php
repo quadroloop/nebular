@@ -1045,8 +1045,6 @@ if($page == 'login'): ?>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
