@@ -1065,7 +1065,6 @@ if($page == 'login'): ?>
                 </div>
             </div>
         </footer>
-
     </div>
 </div>
 </body>
