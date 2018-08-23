@@ -1078,7 +1078,6 @@ if($page == 'login'): ?>
             document.getElementsByClassName('active')[0].classList.remove('active'); 
             menu.classList.add('active');
         }
-
         function search(){          
     // Declare variables
     var input, filter, ul, li, a, i;
