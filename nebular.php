@@ -349,7 +349,6 @@ function qcolor($req){
 
 <?php
 if($page == 'login'): ?>
-
     <div id="login">
        <center>
           <div class="login-container">
