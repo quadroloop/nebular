@@ -303,7 +303,6 @@ if($usr == 'delta' && $pass == 'APIv0'){
 function ndir($var) {
   return str_replace('./nebular-src/vm/', '', $var);
 }
-
 // select request color
 function qcolor($req){
   switch($req){
@@ -322,7 +321,6 @@ function qcolor($req){
   }
  }
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
