@@ -1,4 +1,5 @@
 # ignore git-watch.bat and other batchfiles
 *.bat
-
+zyte.php
+zyte.config
 # end of nebular git ignore
