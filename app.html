@@ -1,0 +1,143 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand pt-2 pr-3" href="#"><img src="./src/nebular.png" width="120;"></a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" id="home" onclick="nav(this.id);">
+                <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item" id="addCode" onclick="nav(this.id);">
+                <a class="nav-link px-3" href="#"><strong>+</strong> Add Code</a>
+                <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Info</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+
+        </ul>
+        <!-- Links -->
+
+        <form class="form-inline">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" onkeyup="search_base();" type="text" placeholder="Search" aria-label="Search" id="search">
+            </div>
+        </form>
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<div id="app" class="p-3">
+    <div class="row">
+         <div class="col-md-3" style="border-right: 1px solid #bbb">
+             <p><b>Settings</b></p>
+             <label class="small text-primary">ACCESS KEY:</label>
+             <input type="text" placeholder="Add Access Key" class="form-input">
+             <button class="btn btn-primary btn-sm mt-3">Add Access key</button>    
+             <hr>
+             <ul id="codes" class="p-0" style="list-style: none;">
+             
+         <li>
+            
+       <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+        <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+         <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+          <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+           <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;"><h6><span class="text-warning">#</span> FICC API (ficc.sh)</h6></div>
+
+        </li>
+           </ul>
+         </div>
+
+         <div class="col-md-9">
+
+            <div class="bg-light p-1 rounded border my-2">
+            <a class="btn btn-warning btn-sm">Objects</a>
+            </div>
+
+            <ul id="codes" class="p-0" style="list-style: none;">
+             
+            <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+             <li>
+            <div class="container p-2 bg-light small" style="border-top: 1px solid #ddd;">
+                <h6><span class="text-warning">#</span> FICC API (ficc.sh)
+                    <span class="btn btn-danger btn-sm float-right p-1 m-0 rounded">Remove object</span>
+                </h6>
+            </div>
+            </li>
+
+        </ul>
+
+         </div>
+
+    </div>
+</div>
