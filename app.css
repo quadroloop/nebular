@@ -20,3 +20,14 @@
 .delta2{
   border-radius:0;
 }
+
+.object-item {
+	cursor: pointer;
+}
+
+.loginx {
+	background: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.9)), url('./nebular-src/loop.gif') fixed center center;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+}

@@ -1,4 +1,30 @@
+<?php
+session_start();
 
+if(@$_POST['usr']=="admin" && @$_POST['pass']=='root'){
+	$_SESSION['logged_in'] = true;
+}
+ 
+if(isset($_GET["logout"])){
+	$_SESSION['logged_in'] = false;
+	header("location: nebular.php");
+}
+
+ $api = @$_GET['object_group'];
+
+ $ObjectList = array();
+
+if(isset($api)){
+  if(is_dir($api)){
+    	$files = glob($api.'/*.io', GLOB_BRACE);
+foreach($files as $file) {
+  array_push($ObjectList,$file);
+}
+echo json_encode($ObjectList);
+  }
+  exit();
+}
+?>
 <!doctype HTML>
 <html>
 <head>
