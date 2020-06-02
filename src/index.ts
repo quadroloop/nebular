@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 
 io.sockets.on('connection', function (socket) {
-  socket.on("update", () => {
+  socket.on("updatedb", () => {
     console.log('nebular ====> update')
   })
 });

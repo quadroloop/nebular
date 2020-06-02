@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nebular DB test</title>
+  <meta name="theme-color" content="#000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Helvetica';
+    }
+
+    #delta {
+      height: 100vh;
+      width: 100vw;
+      background: #000;
+      color: lime;
+    }
+
+    button {
+      color: #333;
+      background: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 2px;
+    }
+  </style>
+
+  <div>
+    <ol>
+      <li>This is the first data item</li>
+    </ol>
+  </div>
+
+  <hr>
+
+  <center>
+    <button onclick="callDB()">Update</button>
+  </center>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="nebular.js"></script>
+<script src="app.js">
+</script>
+
+</html>
