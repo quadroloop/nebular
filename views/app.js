@@ -1,6 +1,6 @@
 
-const socket = io()
 
 function callDB() {
-  socket.emit("updatedb")
+  var info = { id: '1234' }
+  socket.emit("init", info)
 }
