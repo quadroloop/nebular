@@ -16,6 +16,7 @@ let port = process.env.PORT || 7000;
 app.use(express.static('views'));
 http.listen(port);
 
+var collections = {};
 var nodeList = [];
 
 
@@ -37,17 +38,30 @@ io.sockets.on('connection', function (socket: any) {
 
 
   // for initilisation of a node
-  socket.on("init",(data) => {
-  console.log(`[nebular] :: init :: nodeID => ${data.nodeID} : ${Date.now()}`)
+  socket.on("init",(node) => {
+  console.log(`[nebular] :: init :: nodeID => ${node.nodeID} : ${Date.now()}`)
 
-  if (!nodeList.includes(data.nodeID)) {
-    nodeList.push(data.nodeID)
+  if(!collections[node.uid]){
+
+      console.log(node.data)
+      collections[node.uid] = {
+        lastUpdate: Date.now(),
+        data: node.data
+      }
+
+      if (!nodeList.includes(node.nodeID)) {
+        nodeList.push(node.nodeID)
+        }
+        io.emit("nodes",nodeList)
+    }else{
+      collections[node.uid] = {
+        lastUpdate: Date.now(),
+        data: node.data
+      }
     }
-
-    io.emit("nodes",nodeList)
-
   })
 
+  console.table(collections)
 
   socket.on("getNodes",()=>{
     io.emit("nodes",nodeList)
@@ -57,21 +71,21 @@ io.sockets.on('connection', function (socket: any) {
   socket.on("update",(delta)=>{
    if(typeof delta === "object"){
 
-  if (typeof delta.data === "object") {
+  if (typeof delta.newData === "object") {
     let date = Date.now()
     let newDelta = {
-      date: date,
-      origin: delta.nodeID,
-      data: delta.data
+      lastUpdate: date,
+      key: delta.key,
+      data: delta.newData
     }
 
-io.emit('updateDB',newDelta)
+ io.emit('updateDB',newDelta)
   } else {
     console.log('ERROR: (DB update ignored, format incorrect data format from source!)')
   }
 
     }else{
-     console.log('ER ROR: ( DB  update ignored, format incorrect request format from source!)')
+     console.log('ERROR: ( DB  update ignored, format incorrect request format from source!)')
 }
   })
 

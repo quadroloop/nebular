@@ -1,7 +1,4 @@
 
-
-
-
 const socket = io();
 
 
@@ -14,11 +11,13 @@ const guid = () => {
 
 var seed;
 
-function createNode() {
+function createNode(key) {
 
   var node = {
     nodeID: guid(),
-    date: Date.now(),
+    uid: key,
+    createdAt: Date.now(),
+    lastUpdate: Date.now(),
     data: {}
     }
 
@@ -33,22 +32,50 @@ function nebularSeed(data) {
   seed = data;
 }
 
-socket.on("nodes", nodes => {
-  if (nodes.length === 1) {
-    alert('seed it man!')
-  } else {
-    alert('check if seend is valid first')
-  }
-})
+// socket.on("nodes", nodes => {
+//   if (nodes.length === 1) {
+//     alert('seed it man!')
+//   } else {
+//     alert('check if seed is valid first')
+//   }
+// })
+
+socket.on("updateDB", (dx) => {
+  let key = JSON.parse(localStorage.nebular).uid
+  if (dx.key === key) {
+    let nebular = JSON.parse(localStorage.nebular);
+    nebular.lastUpdate = dx.lastUpdate;
+    nebular.data = dx.data;
+    localStorage.nebular = JSON.stringify(nebular)
+    }
+  })
 
 
-function nebularInit() {
+function nebularInit(key) {
   if (!localStorage.nebular) {
-    createNode()
+    createNode(key)
   }
 }
 
-nebularInit()
+function setNebula(data) {
+  if (data && typeof data === 'object') {
+    let key = JSON.parse(localStorage.nebular).uid
+    socket.emit('update', { newData: data, key: key })
+    }
+}
 
 
-nebularSeed({ x: 1, y: 1 })
+
+function useNebula() {
+    if (localStorage.nebular) {
+         let dy = JSON.parse(localStorage.nebular)
+          if(typeof dy === 'object') {
+        return dy.data;
+      } else {
+        return undefined
+      }
+  }
+  }
+
+
+
