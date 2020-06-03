@@ -3,10 +3,6 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-import moment from 'moment'
-import { deflate } from 'zlib';
-import { ENGINE_METHOD_ALL } from 'constants';
-
 require('dotenv').config();
 
 io.set('origins', '*:*');
@@ -25,10 +21,12 @@ console.log(`Nebular Server: ${port}`)
 console.log(`===============================`)
 
 
-app.get("/", (req, res) => {
+app.get("/nebular", (req, res) => {
   res.send({
     message: "Nebular Core v. 1.0",
-    status: "running"
+    status: "running",
+    total_nodes: nodeList.length,
+    total_collections: Object.keys(collections).length
   })
 })
 
@@ -59,6 +57,10 @@ io.sockets.on('connection', function (socket: any) {
     io.emit("nodes", nodeList)
   })
 
+  socket.on("nebular_event", (data) => {
+    io.emit("nebularEvent", data)
+  })
+
 
   // for datastore updates
   socket.on("update", (delta) => {
@@ -71,10 +73,7 @@ io.sockets.on('connection', function (socket: any) {
           key: delta.key,
           data: delta.newData
         }
-
         io.emit('updateDB', newDelta)
-
-        console.table(newDelta)
 
       } else {
         console.log('ERROR: (DB update ignored, format incorrect data format from source!)')
@@ -84,5 +83,4 @@ io.sockets.on('connection', function (socket: any) {
       console.log('ERROR: ( DB  update ignored, format incorrect request format from source!)')
     }
   })
-
 });

@@ -16,3 +16,10 @@ function getData() {
   let data = JSON.stringify(useNebula())
   document.getElementById('x-data').innerHTML = data;
 }
+
+function runTimer() {
+  // running timer
+  setInterval(() => {
+    nebularEvent("hehehehe", { user: "Bryce Mercines" })
+  }, 3000)
+}

@@ -33,13 +33,38 @@ socket.on("updateDB", (dx) => {
 })
 
 socket.on("syncSearch", (data) => {
-  if (localStorage.nebular) {
-    let db = useNebula();
-    if (db && data.key === JSON.parse(localStorage.nebular).uid) {
-      if (Object.keys(db).length > 0) {
-        setNebula(db)
-      }
+  let db = useNebula();
+  if (db && data.key === JSON.parse(localStorage.nebular).uid) {
+    if (Object.keys(db).length > 0) {
+      setNebula(db)
     }
+  }
+})
+
+function nebularEvent(name, data) {
+  if (localStorage.nebular) {
+    let key = JSON.parse(localStorage.nebular).uid
+    socket.emit("nebular_event", { uid: key, name: name, data: data })
+  } else {
+    console.error("Nebular: invalid event call, nebular is not initialized.")
+  }
+}
+
+function validKey(key) {
+  let result = false;
+  if (localStorage.nebular) {
+    let collection_key = JSON.parse(localStorage.nebular).uid;
+    if (collection_key === key) {
+      result = true;
+    }
+  }
+
+  return result;
+}
+
+socket.on("nebularEvent", (data) => {
+  if (validKey(data.uid)) {
+    console.log('valid session!')
   }
 })
 
