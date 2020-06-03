@@ -13,7 +13,7 @@ io.set('origins', '*:*');
 
 let port = process.env.PORT || 7000;
 
-app.use(express.static('views'));
+app.use(express.static('client'));
 http.listen(port);
 
 var collections = {};
@@ -32,18 +32,13 @@ app.get("/", (req, res) => {
   })
 })
 
-
 io.sockets.on('connection', function (socket: any) {
-
-
 
   // for initilisation of a node
   socket.on("init", (node) => {
     console.log(`[nebular] :: init :: nodeID => ${node.nodeID} : ${Date.now()}`)
 
     if (!collections[node.uid]) {
-
-      console.log(node.data)
       collections[node.uid] = {
         lastUpdate: Date.now(),
         data: node.data
@@ -59,7 +54,6 @@ io.sockets.on('connection', function (socket: any) {
     }
   })
 
-  console.table(collections)
 
   socket.on("getNodes", () => {
     io.emit("nodes", nodeList)
@@ -79,6 +73,9 @@ io.sockets.on('connection', function (socket: any) {
         }
 
         io.emit('updateDB', newDelta)
+
+        console.table(newDelta)
+
       } else {
         console.log('ERROR: (DB update ignored, format incorrect data format from source!)')
       }
@@ -87,6 +84,5 @@ io.sockets.on('connection', function (socket: any) {
       console.log('ERROR: ( DB  update ignored, format incorrect request format from source!)')
     }
   })
-
 
 });
