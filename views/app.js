@@ -11,3 +11,8 @@ function callDB() {
 function addData() {
   setNebula({ tx: Date.now() })
 }
+
+function getData() {
+  let data = JSON.stringify(useNebula())
+  document.getElementById('x-data').innerHTML = data;
+}

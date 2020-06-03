@@ -38,10 +38,10 @@ io.sockets.on('connection', function (socket: any) {
 
 
   // for initilisation of a node
-  socket.on("init",(node) => {
-  console.log(`[nebular] :: init :: nodeID => ${node.nodeID} : ${Date.now()}`)
+  socket.on("init", (node) => {
+    console.log(`[nebular] :: init :: nodeID => ${node.nodeID} : ${Date.now()}`)
 
-  if(!collections[node.uid]){
+    if (!collections[node.uid]) {
 
       console.log(node.data)
       collections[node.uid] = {
@@ -51,42 +51,41 @@ io.sockets.on('connection', function (socket: any) {
 
       if (!nodeList.includes(node.nodeID)) {
         nodeList.push(node.nodeID)
-        }
-        io.emit("nodes",nodeList)
-    }else{
-      collections[node.uid] = {
-        lastUpdate: Date.now(),
-        data: node.data
       }
+      io.emit("nodes", nodeList)
+    } else {
+      console.log(`[nebular] :: init :: nodeId => ${node.nodeID}: Joined collection`);
+      io.emit("syncSearch", { key: node.uid })
     }
   })
 
   console.table(collections)
 
-  socket.on("getNodes",()=>{
-    io.emit("nodes",nodeList)
+  socket.on("getNodes", () => {
+    io.emit("nodes", nodeList)
   })
 
-// for datastore updates
-  socket.on("update",(delta)=>{
-   if(typeof delta === "object"){
 
-  if (typeof delta.newData === "object") {
-    let date = Date.now()
-    let newDelta = {
-      lastUpdate: date,
-      key: delta.key,
-      data: delta.newData
+  // for datastore updates
+  socket.on("update", (delta) => {
+    if (typeof delta === "object") {
+
+      if (typeof delta.newData === "object") {
+        let date = Date.now()
+        let newDelta = {
+          lastUpdate: date,
+          key: delta.key,
+          data: delta.newData
+        }
+
+        io.emit('updateDB', newDelta)
+      } else {
+        console.log('ERROR: (DB update ignored, format incorrect data format from source!)')
+      }
+
+    } else {
+      console.log('ERROR: ( DB  update ignored, format incorrect request format from source!)')
     }
-
- io.emit('updateDB',newDelta)
-  } else {
-    console.log('ERROR: (DB update ignored, format incorrect data format from source!)')
-  }
-
-    }else{
-     console.log('ERROR: ( DB  update ignored, format incorrect request format from source!)')
-}
   })
 
 

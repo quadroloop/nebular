@@ -19,10 +19,10 @@ function createNode(key) {
     createdAt: Date.now(),
     lastUpdate: Date.now(),
     data: {}
-    }
+  }
 
   localStorage.nebular = JSON.stringify(node);
-socket.emit('init', node);
+  socket.emit('init', node);
 }
 
 function nebularSeed(data) {
@@ -47,8 +47,20 @@ socket.on("updateDB", (dx) => {
     nebular.lastUpdate = dx.lastUpdate;
     nebular.data = dx.data;
     localStorage.nebular = JSON.stringify(nebular)
+  }
+})
+
+socket.on("syncSearch", (data) => {
+  if (localStorage.nebular) {
+    let db = useNebula();
+    if (db && data.key === JSON.parse(localStorage.nebular).uid) {
+      if (Object.keys(db).length > 0) {
+        setNebula(db)
+      }
     }
-  })
+  }
+})
+
 
 
 function nebularInit(key) {
@@ -61,21 +73,22 @@ function setNebula(data) {
   if (data && typeof data === 'object') {
     let key = JSON.parse(localStorage.nebular).uid
     socket.emit('update', { newData: data, key: key })
-    }
+  }
 }
 
 
 
 function useNebula() {
-    if (localStorage.nebular) {
-         let dy = JSON.parse(localStorage.nebular)
-          if(typeof dy === 'object') {
-        return dy.data;
-      } else {
-        return undefined
-      }
+  if (localStorage.nebular) {
+    let dy = JSON.parse(localStorage.nebular)
+    if (typeof dy === 'object') {
+      return dy.data;
+    } else {
+      return undefined
+    }
   }
-  }
+}
+
 
 
 
