@@ -1,11 +1,15 @@
-// Nebular Client Module fro VanillaJS
+// Nebular Client Module: for JS / React no types:
 
 /*
-Dependencies:
-socket.io
+ Dependencies:
+
+ socket.io-client
+
 */
 
-const socket = io();
+import io from 'socket.io-client'
+
+const socket = io()
 
 const guid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -47,7 +51,20 @@ socket.on("syncSearch", (data) => {
   }
 })
 
-function nebularEvent(name, data) {
+// main exports
+
+export function validKey(key) {
+  let result = false;
+  if (localStorage.nebular) {
+    let collection_key = JSON.parse(localStorage.nebular).uid;
+    if (collection_key === key) {
+      result = true;
+    }
+  }
+  return result;
+}
+
+export function nebularEvent(name, data) {
   if (localStorage.nebular) {
     let key = JSON.parse(localStorage.nebular).uid
     socket.emit("nebular_event", { uid: key, name: name, data: data })
@@ -56,32 +73,20 @@ function nebularEvent(name, data) {
   }
 }
 
-function validKey(key) {
-  let result = false;
-  if (localStorage.nebular) {
-    let collection_key = JSON.parse(localStorage.nebular).uid;
-    if (collection_key === key) {
-      result = true;
-    }
-  }
-
-  return result;
-}
-
-function nebularInit(key) {
+export function nebularInit(key) {
   if (!localStorage.nebular) {
     createNode(key)
   }
 }
 
-function setNebula(data) {
+export function setNebula(data) {
   if (data && typeof data === 'object') {
     let key = JSON.parse(localStorage.nebular).uid
     socket.emit('update', { newData: data, key: key })
   }
 }
 
-function useNebula() {
+export function useNebula() {
   if (localStorage.nebular) {
     let dy = JSON.parse(localStorage.nebular)
     if (typeof dy === 'object') {
@@ -93,7 +98,7 @@ function useNebula() {
   }
 }
 
-// event handlers
+// Event handling
 
 socket.on("nebularEvent", (data) => {
   if (validKey(data.uid)) {
