@@ -10,13 +10,13 @@
 import io from 'socket.io-client'
 
 // must be replaced with proper nebular server instance
-const nebular_url = 'http://test-server.com'
+const nebular_url = 'https://nebulardb.herokuapp.com'
 
-const socket = io(nebular_url)
+export const socket = io(nebular_url)
 
-const guid = () => {
+export const guid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 || 0x8);
     return v.toString(16);
   });
 }
@@ -46,7 +46,7 @@ socket.on("updateDB", (dx) => {
 })
 
 socket.on("syncSearch", (data) => {
-  let db = useNebula();
+  let db = fetchNebula();
   if (db && data.key === JSON.parse(localStorage.nebular).uid) {
     if (Object.keys(db).length > 0) {
       setNebula(db)
@@ -89,13 +89,13 @@ export function setNebula(data) {
   }
 }
 
-export function useNebula() {
+export function fetchNebula() {
   if (localStorage.nebular) {
     let dy = JSON.parse(localStorage.nebular)
     if (typeof dy === 'object') {
       return dy.data;
     } else {
-      console.error('Nebular: useNebula: cannot fetch data, source must be an object')
+      console.error('Nebular: fetchNebula: cannot fetch data, source must be an object')
       return undefined
     }
   }

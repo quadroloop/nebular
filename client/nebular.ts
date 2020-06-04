@@ -1,4 +1,4 @@
-// Nebular Client Module: for TypeScript:
+// Nebular Client Module: for JS / React no types:
 
 /*
  Dependencies:
@@ -10,18 +10,18 @@
 import io from 'socket.io-client'
 
 // must be replaced with proper nebular server instance
-const nebular_url = 'http://test-server.com'
+const nebular_url = 'https://nebulardb.herokuapp.com'
 
-const socket = io(nebular_url)
+export const socket = io(nebular_url)
 
-const guid = () => {
+export const guid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 || 0x8);
     return v.toString(16);
   });
 }
 
-function createNode(key: String) {
+function createNode(key: string) {
 
   var node = {
     nodeID: guid(),
@@ -46,7 +46,7 @@ socket.on("updateDB", (dx: any) => {
 })
 
 socket.on("syncSearch", (data: any) => {
-  let db = useNebula();
+  let db = fetchNebula();
   if (db && data.key === JSON.parse(localStorage.nebular).uid) {
     if (Object.keys(db).length > 0) {
       setNebula(db)
@@ -56,7 +56,7 @@ socket.on("syncSearch", (data: any) => {
 
 // main exports
 
-export function validKey(key: String) {
+export function validKey(key: string) {
   let result = false;
   if (localStorage.nebular) {
     let collection_key = JSON.parse(localStorage.nebular).uid;
@@ -67,7 +67,7 @@ export function validKey(key: String) {
   return result;
 }
 
-export function nebularEvent(name: String, data: any) {
+export function nebularEvent(name: string, data: any) {
   if (localStorage.nebular) {
     let key = JSON.parse(localStorage.nebular).uid
     socket.emit("nebular_event", { uid: key, name: name, data: data })
@@ -76,7 +76,7 @@ export function nebularEvent(name: String, data: any) {
   }
 }
 
-export function nebularInit(key: String) {
+export function nebularInit(key: string) {
   if (!localStorage.nebular) {
     createNode(key)
   }
@@ -89,13 +89,13 @@ export function setNebula(data: any) {
   }
 }
 
-export function useNebula() {
+export function fetchNebula() {
   if (localStorage.nebular) {
     let dy = JSON.parse(localStorage.nebular)
     if (typeof dy === 'object') {
       return dy.data;
     } else {
-      console.error('Nebular: useNebula: cannot fetch data, source must be an object')
+      console.error('Nebular: fetchNebula: cannot fetch data, source must be an object')
       return undefined
     }
   }
