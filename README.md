@@ -55,7 +55,7 @@ nebularEvent("EVENT_NAME",{a:1,b:2,c:3})
  socket.on("nebularEvent", (data) => {
     if (validKey(data.uid)) {
       if (data.name === "EVENT_NAME") {
-         console.log(data) // {name: "EVENT_NAME", data: {x:1,x2,x:3}}
+         console.log(data) // {name: "EVENT_NAME", data: {a:1,b:2,c:3}}
       }
     }
   })
