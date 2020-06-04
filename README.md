@@ -17,8 +17,8 @@ nebular has multiple client-side modules that you can import to your project.
 nebular has one dependency: socket.io
 
 `ReactJS`
-[ReactJS Client Module](../blob/master/client/nebular.basic.ts)
-[React with TypeSrcipt Client Module](../blob/master/client/nebular.ts)
+[ReactJS Client Module](/client/nebular.basic.ts)
+[React with TypeSrcipt Client Module](/client/nebular.ts)
 - nebular.basic.ts, can be renamed to `.js` to run it in react applications
 ```js
 import { fetchNebula,
@@ -37,7 +37,7 @@ import { fetchNebula,
  let storage = fetchNebula();
 
  // update data of instance
- let data = {x:1, x:2, x:3};
+ let data = {a:1, b:2, c:3};
  setNebula(data);
 ```
 once `fetchNebula()` is called after an update, with will retrieve the updated data,
@@ -48,7 +48,7 @@ nebular supports a wrapper for data emits events through WebSockets, for sending
 ```js
 
 // broadcast event
-nebularEvent("EVENT_NAME",{x:1,x:2,x:3})
+nebularEvent("EVENT_NAME",{a:1,b:2,c:3})
 
 
 // catch event
@@ -63,7 +63,7 @@ nebularEvent("EVENT_NAME",{x:1,x:2,x:3})
 
 ##### Vanilla JS Usage
 if you prefer to code in vanilla JS the usage is simply use the same functions as with React the only difference is the import method.
-[vanilla JS Client Module](../blob/master/client/nebular.js)
+[vanilla JS Client Module](/client/nebular.js)
 ```html
   <!-- include socket.io cdn -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
