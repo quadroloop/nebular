@@ -9,7 +9,10 @@
 
 import io from 'socket.io-client'
 
-const socket = io()
+// must be replaced with proper nebular server instance
+const nebular_url = 'http://test-server.com'
+
+const socket = io(nebular_url)
 
 const guid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
