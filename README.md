@@ -1,5 +1,5 @@
 ![alt text](https://mist.now.sh/mist/nebular.png "Logo Title Text 1")
-## nebular
+# nebular
 > A super small, distributed, real-time and event-driven database for rapid web application prototyping.
 
 ##### Project Goal:
@@ -11,6 +11,7 @@ Remove the complexity required to create Web application prototypes that demonst
 - Real-time events
 - Client-side data store using LocalStorage (5MB limit in most browsers)
 - Automatic data sync, (new and reinitialized nodes within an instance can instantly obtain previews data state as long as it remains intact in one of the nodes)
+- Convert payload data from endpoint to usable data fetch from socket event
 
 ##### Client Usage:
 nebular has multiple client-side modules that you can import to your project.
@@ -59,6 +60,32 @@ nebularEvent("EVENT_NAME",{a:1,b:2,c:3})
       }
     }
   })
+```
+
+`Fetch data send to the endpoint via POST`
+You can send data to the nebular server and instantly received the data using WebSockets.
+```sh
+ POST:/nebular/data
+```
+Payload Structure:
+The only field required in the payload is the `nebular_key` field to identify the nebular instance.
+```json
+{
+  "a": 1,
+  "b": 2,
+  "c": 3
+  "nebular_key": "random_nebular_instance_key"
+}
+```
+Catch data:
+```js
+socket.on("nebular_payload", (data: any) => {
+  if (validKey(data.nebular_key)) {
+    console.log(data)
+    // handle payload
+  }
+})
+
 ```
 
 ##### Vanilla JS Usage
