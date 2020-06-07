@@ -95,8 +95,19 @@ function useNebula() {
 
 // event handlers
 
+
 socket.on("nebularEvent", (data) => {
   if (validKey(data.uid)) {
-    console.log('valid session!')
+    console.log(data)
+    // handle events
+  }
+})
+
+// payload handling
+
+socket.on("nebular_payload", (data) => {
+  if (validKey(data.nebular_key)) {
+    console.log(data)
+    // handle payload
   }
 })

@@ -10,7 +10,7 @@
 import io from 'socket.io-client'
 
 // must be replaced with proper nebular server instance
-const nebular_url = 'https://nebulardb.herokuapp.com'
+const nebular_url = 'nebular_instance_url'
 
 export const socket = io(nebular_url)
 
@@ -105,6 +105,16 @@ export function fetchNebula() {
 
 socket.on("nebularEvent", (data: any) => {
   if (validKey(data.uid)) {
-    console.log('valid session!')
+    console.log(data)
+    // handle events
+  }
+})
+
+// payload handling
+
+socket.on("nebular_payload", (data: any) => {
+  if (validKey(data.nebular_key)) {
+    console.log(data)
+    // handle payload
   }
 })

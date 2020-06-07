@@ -2,6 +2,8 @@ import express from 'express'
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+import cors from 'cors'
+import bodyParser from 'body-parser'
 
 require('dotenv').config();
 
@@ -9,6 +11,9 @@ io.set('origins', '*:*');
 
 let port = process.env.PORT || 7000;
 
+app.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('client'));
 http.listen(port);
 
@@ -21,13 +26,32 @@ console.log(`Nebular Server: ${port}`)
 console.log(`===============================`)
 
 
-app.get("/nebular", (req, res) => {
+app.get("/status", (req, res) => {
   res.send({
     message: "Nebular Core v. 1.0",
     status: "running",
     total_nodes: nodeList.length,
     total_collections: Object.keys(collections).length
   })
+})
+
+// parse payload to socket event
+app.post("/nebular/data", (req, res) => {
+  let payload = req.body
+
+  if (Object.keys(payload).length === 0) {
+    res.send(401)
+  } else {
+    if (typeof payload.nebular_key !== "string") {
+      res.send(401)
+    } else {
+      io.emit("nebular_payload", payload)
+      res.send({
+        status: 200,
+        message: "payload recieved"
+      })
+    }
+  }
 })
 
 io.sockets.on('connection', function (socket: any) {
